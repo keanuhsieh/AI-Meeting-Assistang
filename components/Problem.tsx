@@ -10,17 +10,17 @@ const Problem: React.FC = () => {
 
         <div className="mt-16 max-w-4xl mx-auto grid md:grid-cols-3 gap-8 text-center">
             <div className="bg-white p-6 rounded-xl shadow-md border border-slate-200">
-                <p className="text-lg text-slate-600">[ 1 場會議 ] x [ 4 小時聽打整理 ]</p>
+                <p className="text-lg text-slate-600"> 1 場會議 x 4 小時整理</p>
                 <p className="text-3xl font-bold text-red-500 mt-2">= 浪費 4 小時</p>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-md border border-slate-200">
-                <p className="text-lg text-slate-600">[ 20 場會議/月 ] x [ 4 小時 ]</p>
+                <p className="text-lg text-slate-600">20 場會議/月 x 4 小時 </p>
                 <p className="text-3xl font-bold text-red-600 mt-2">= 浪費 80 小時/月</p>
-                <p className="text-base text-slate-500 mt-1">(等於 10 個工作天)</p>
+                <p className="text-base text-slate-500 mt-1">= 每個月耗 10 天做會議記錄</p>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-lg border border-slate-200 scale-105">
-                <p className="text-lg text-slate-600">[ 10 天/月 ] x [ 12 個月 ]</p>
-                <p className="text-4xl font-extrabold text-red-700 mt-2">每年浪費 120 天</p>
+                <p className="text-lg text-slate-600">10 天/月 x 12 個月</p>
+                <p className="text-4xl font-extrabold text-red-700 mt-2">= 每年浪費 120 天</p>
             </div>
         </div>
 

@@ -17,7 +17,7 @@ const Trust: React.FC = () => {
         <section id="trust" className="py-20 md:py-28 bg-slate-100">
             <div className="container mx-auto px-6">
                 <div className="text-center max-w-3xl mx-auto">
-                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900">您的會議記錄，不該上傳到「中資疑慮」的資料庫。</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900">您的會議記錄，不該上傳到有疑慮的資料庫。</h2>
                     <p className="mt-4 text-lg text-slate-600">
                         為什麼公務機關和專業人士信賴我們？因為您的資料，
                         <strong className="text-orange-600">從頭到尾都只在您的 Google 帳號內</strong>。
