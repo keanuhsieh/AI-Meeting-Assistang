@@ -10,6 +10,8 @@ const Trust: React.FC = () => {
         { feature: '中資風險', ours: <span className="flex items-center justify-center font-bold text-green-600"><CheckIcon /> 零 (Zero)</span>, theirs: <span className="flex items-center justify-center font-bold text-red-600"><CrossIcon /> 高風險 (High Risk)</span> },
         { feature: '硬體成本', ours: '$0 (使用您現有手機)', theirs: '$4,000 - $8,000' },
         { feature: '月費', ours: '整合 Google 訂閱 (無額外費用)', theirs: '額外 $300 - $700/月 (轉錄費)' },
+        { feature: '總使用成本', ours: <span className="flex items-center justify-center gap-1 font-bold text-green-700">最低 🪙🪙</span>, theirs: <span className="flex items-center justify-center gap-1 font-bold text-red-700">最高 🪙🪙🪙🪙🪙🪙</span> },
+        { feature: '軟體生態系', ours: '超健全的Google生態', theirs: '只有廠商自己的軟體' },
         { feature: '會議記錄整合性', ours: <span className="font-bold text-green-700">極高</span>, theirs: <span className="font-bold text-red-700">極低</span> },
     ];
     
@@ -27,14 +29,14 @@ const Trust: React.FC = () => {
                 <div className="mt-16 max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-200">
                     <div className="grid grid-cols-3 text-center font-bold text-lg bg-slate-50">
                         <div className="p-4 border-b border-slate-200">特性</div>
-                        <div className="p-4 border-b border-l border-slate-200 bg-orange-50 text-orange-800">本服務 (Google 整合方案)</div>
+                        <div className="p-4 border-b border-l border-orange-200 bg-orange-50 text-orange-900 font-extrabold shadow-xl shadow-orange-500/20 z-10 relative">AI 會議助理(Google)</div>
                         <div className="p-4 border-b border-l border-slate-200 bg-red-50 text-red-800">他牌 AI 錄音筆 (中資硬體)</div>
                     </div>
                     {tableData.map((row, index) => (
                         <div key={index} className="grid grid-cols-3 text-center items-center">
-                            <div className="p-4 font-semibold text-slate-700 text-left md:text-center border-b border-slate-200">{row.feature}</div>
-                            <div className="p-4 border-b border-l border-slate-200 text-orange-900 bg-orange-50/50">{row.ours}</div>
-                            <div className="p-4 border-b border-l border-slate-200 text-red-900 bg-red-50/50">{row.theirs}</div>
+                            <div className="p-4 font-semibold text-slate-700 text-left md:text-center border-b border-slate-200 h-full flex items-center justify-start md:justify-center">{row.feature}</div>
+                            <div className="p-4 border-b border-l border-orange-200 text-slate-800 font-semibold bg-orange-50 shadow-xl shadow-orange-500/20 h-full flex items-center justify-center">{row.ours}</div>
+                            <div className="p-4 border-b border-l border-slate-200 text-red-900 bg-red-50/50 h-full flex items-center justify-center">{row.theirs}</div>
                         </div>
                     ))}
                 </div>

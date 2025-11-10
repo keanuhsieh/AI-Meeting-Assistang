@@ -98,7 +98,7 @@ const Testimonials: React.FC = () => {
                 <p className="mt-4 text-lg text-slate-600">從各行各業的專業人士，到政府機關公務員，因為 AI 會議助理 而改變工作模式。</p>
             </div>
             <div className="mt-16 relative w-full overflow-hidden">
-                <div className="flex animate-marquee hover:pause">
+                <div className="flex flex-nowrap animate-marquee w-max">
                     {doubledTestimonials.map((testimonial, index) => (
                         <TestimonialCard key={index} {...testimonial} />
                     ))}
