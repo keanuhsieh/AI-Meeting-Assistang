@@ -60,7 +60,7 @@ const Trust: React.FC = () => {
 
 
                 <p className="mt-12 text-center text-lg font-semibold text-slate-700 max-w-3xl mx-auto">
-                    停止購買昂貴的硬體，付月費把資料存在有風險的資料庫。 <br /> 利用您的手機、既有的 Google 帳號更為強大。
+                    停止購買昂貴的硬體加月費，還把資料存在有風險的資料庫。 <br /> 善用您的手機、既有的 Google 帳號，更好用與便且。
                 </p>
             </div>
         </section>
