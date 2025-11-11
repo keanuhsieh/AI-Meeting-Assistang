@@ -20,9 +20,9 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 bg-slate-900/70 z-10"></div>
       <div className="relative z-20 container mx-auto px-6 text-center">
         <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight">
-          別再浪費 <span className="text-orange-400">2 天</span> 聽打。
+          別浪費 <span className="text-orange-400">4 小時做會議記錄</span> 
           <br />
-          1 小時會議錄音，<span className="text-orange-400">3 分鐘</span> 變 Google 文件。
+          1 小時會議，你只需要<span className="text-orange-400">3 分鐘</span>
         </h1>
         <p className="mt-6 text-lg md:text-xl text-slate-200 max-w-3xl mx-auto">
           讓公務員與專業人士，將機密會議錄音 
@@ -31,7 +31,9 @@ const Hero: React.FC = () => {
         </p>
 
         <div id="cta" className="mt-12">
-            <a href="https://page.cashier.ecpay.com.tw/forms/cPy2" className="inline-block bg-orange-600 text-white text-xl font-bold px-12 py-5 rounded-xl shadow-lg hover:bg-orange-700 transform hover:scale-105 transition-all duration-300 hover:shadow-orange-500/50">
+            <a href="https://page.cashier.ecpay.com.tw/forms/cPy2" 
+               data-gtm-id="cta-hero"
+               className="inline-block bg-orange-600 text-white text-xl font-bold px-12 py-5 rounded-xl shadow-lg hover:bg-orange-700 transform hover:scale-105 transition-all duration-300 hover:shadow-orange-500/50">
                 立即開始，一年省下 120 天
             </a>
             <p className="mt-4 text-sm text-slate-300 flex items-center justify-center">

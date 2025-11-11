@@ -1,7 +1,11 @@
 import React from 'react';
 
 const UseCaseCard: React.FC<{ icon: React.ReactNode; title: string; children: React.ReactNode }> = ({ icon, title, children }) => (
-    <div className="bg-white p-8 rounded-xl shadow-lg border border-slate-200 flex flex-col items-center text-center transition-transform transform hover:-translate-y-2">
+    <div 
+        className="bg-white p-8 rounded-xl shadow-lg border border-slate-200 flex flex-col items-center text-center transition-transform transform hover:-translate-y-2 cursor-pointer"
+        data-gtm-id="use-case-card"
+        data-gtm-id-category={title}
+    >
         <div className="bg-orange-100 text-orange-600 rounded-full p-4 mb-4">
             {icon}
         </div>

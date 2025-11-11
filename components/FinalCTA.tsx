@@ -18,7 +18,9 @@ const FinalCTA: React.FC = () => {
                     立即開始，體驗 3 分鐘完成會議摘要。您只需要一個 Google 帳號。
                 </p>
                 <div className="mt-10">
-                    <a href="https://page.cashier.ecpay.com.tw/forms/cPy2" className="inline-block bg-orange-600 text-white text-xl font-bold px-12 py-5 rounded-xl shadow-lg hover:bg-orange-700 transform hover:scale-105 transition-all duration-300 hover:shadow-orange-500/50">
+                    <a href="https://page.cashier.ecpay.com.tw/forms/cPy2" 
+                       data-gtm-id="cta-final"
+                       className="inline-block bg-orange-600 text-white text-xl font-bold px-12 py-5 rounded-xl shadow-lg hover:bg-orange-700 transform hover:scale-105 transition-all duration-300 hover:shadow-orange-500/50">
                         立即開始，一個人一年省下 120天 ，提高會議品質
                     </a>
                     <p className="mt-4 text-sm text-slate-500 flex items-center justify-center">

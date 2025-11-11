@@ -1,7 +1,11 @@
 import React from 'react';
 
 const AssuranceCard: React.FC<{ icon: React.ReactNode; title: string; children: React.ReactNode }> = ({ icon, title, children }) => (
-    <div className="bg-white p-8 rounded-xl shadow-lg border border-slate-200 text-center">
+    <div 
+        className="bg-white p-8 rounded-xl shadow-lg border border-slate-200 text-center cursor-pointer"
+        data-gtm-id="assurance-card"
+        data-gtm-id-assurance={title}
+    >
         <div className="mx-auto bg-green-100 text-green-600 rounded-full h-16 w-16 flex items-center justify-center">
             {icon}
         </div>

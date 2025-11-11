@@ -1,7 +1,11 @@
 import React from 'react';
 
 const FeatureCard: React.FC<{ icon: React.ReactNode; title: string; children: React.ReactNode }> = ({ icon, title, children }) => (
-    <div className="bg-white p-8 rounded-xl shadow-lg border border-slate-200 transition-transform transform hover:-translate-y-2">
+    <div 
+        className="bg-white p-8 rounded-xl shadow-lg border border-slate-200 transition-transform transform hover:-translate-y-2 cursor-pointer"
+        data-gtm-id="feature-card"
+        data-gtm-id-feature={title}
+    >
         <div className="flex items-center space-x-4">
             <div className="bg-orange-100 text-orange-600 rounded-full p-3">
                 {icon}
