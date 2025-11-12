@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
             <a href="https://page.cashier.ecpay.com.tw/forms/cPy2" 
                data-gtm-id="cta-hero"
                className="inline-block bg-orange-600 text-white text-xl font-bold px-12 py-5 rounded-xl shadow-lg hover:bg-orange-700 transform hover:scale-105 transition-all duration-300 hover:shadow-orange-500/50">
-                立即開始，一年省下 120 天
+               NT300 元起 立即開始，一年省下 120 天
             </a>
             <p className="mt-4 text-sm text-slate-300 flex items-center justify-center">
                <GoogleIcon /> 使用 你的Google 帳號安全使用
