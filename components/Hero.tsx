@@ -15,26 +15,27 @@ const Hero: React.FC = () => {
     <section 
       id="hero" 
       className="relative py-20 md:py-32 bg-cover bg-center"
-      style={{ backgroundImage: "url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2940&auto=format&fit=crop')" }}
+      style={{ backgroundImage: "url('https://static.wixstatic.com/media/0f9583_8c57f64f5cb14700ab6c979602e9e674~mv2.avif')" }}
     >
       <div className="absolute inset-0 bg-slate-900/70 z-10"></div>
       <div className="relative z-20 container mx-auto px-6 text-center">
         <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight">
-          別浪費 <span className="text-orange-400">4 小時做會議記錄</span> 
-          <br />
-          1 小時會議，你只需要<span className="text-orange-400">3 分鐘</span>
+          最強 Plaud 替代方案：Gemini 會議記錄 APP
         </h1>
+        <h2 className="mt-4 text-2xl md:text-3xl font-bold text-orange-400">
+          別浪費 4 小時做會議記錄， 3 分鐘產出會議摘要、待辦工作
+        </h2>
         <p className="mt-6 text-lg md:text-xl text-slate-200 max-w-3xl mx-auto">
-          讓公務員與專業人士，將機密會議錄音 
+          公務員與專業人士，用 AI 把會議錄音 
           <span className="font-bold bg-yellow-300 text-slate-900 px-2 py-1 rounded">【安全地】</span>
-           用 AI 轉化為逐字稿、會議記錄，存在 Google 雲端硬碟。
+           轉為逐字稿、會議記錄，存在 Google 雲端硬碟。
         </p>
 
         <div id="cta" className="mt-12">
             <a href="https://page.cashier.ecpay.com.tw/forms/cPy2" 
                data-gtm-id="cta-hero"
                className="inline-block bg-orange-600 text-white text-xl font-bold px-12 py-5 rounded-xl shadow-lg hover:bg-orange-700 transform hover:scale-105 transition-all duration-300 hover:shadow-orange-500/50">
-               NT300 元起 立即開始，一年省下 120 天
+               立即開始，一年省下 120 天。NT300起
             </a>
             <p className="mt-4 text-sm text-slate-300 flex items-center justify-center">
                <GoogleIcon /> 使用 你的Google 帳號安全使用

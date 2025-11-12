@@ -23,7 +23,7 @@ const Solution: React.FC = () => {
         <section id="solution" className="py-20 md:py-28 bg-white">
             <div className="container mx-auto px-6">
                 <div className="text-center max-w-3xl mx-auto">
-                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900">將 120 天的髒活 (Dirty Work)，<br />濃縮成 <span className="text-orange-600">3 分鐘的「有效決策」</span></h2>
+                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900">您的 Gemini 會議記錄 APP，為何優於 AI 錄音卡、錄音筆？</h2>
                     <p className="mt-4 text-lg text-slate-600">
                         您只需要上傳錄音檔或貼上逐字稿。最強大的 Google Gemini 引擎將自動為您完成：
                     </p>
@@ -63,7 +63,7 @@ const Solution: React.FC = () => {
                         icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h-3.234c-.966 0-1.631-.762-1.631-1.631V14.513c0-.966.665-1.631 1.631-1.631h.54M9 11a1 1 0 11-2 0 1 1 0 012 0z" /></svg>}
                         title="支援中英夾雜"
                     >
-                        「專為台灣情境設計，流暢處理公務、商務、學術的跨語言對話，精準到位。」
+                        「用你的手機不需買設備，專為台灣情境設計，流暢處理公務、商務、學術的跨語言對話，精準到位。」
                     </FeatureCard>
                 </div>
             </div>

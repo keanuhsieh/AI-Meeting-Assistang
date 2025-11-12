@@ -21,9 +21,9 @@ const UseCases: React.FC = () => {
         <section id="use-cases" className="py-20 md:py-28 bg-white">
             <div className="container mx-auto px-6">
                 <div className="text-center max-w-3xl mx-auto">
-                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900">適用於各種專業情境</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Plaud ai 做不到：100% Google 雲端整合情境</h2>
                     <p className="mt-4 text-lg text-slate-600">
-                        無論是政府、法律、學術或商業，我們的 AI 助理都能為您節省寶貴時間，專注於核心業務。
+                        無論是政府、法律、學術或商業，我們的 Gemini 會議記錄 APP 都能為您節省寶貴時間，專注於工作。
                     </p>
                 </div>
                 <div className="mt-16 max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8">

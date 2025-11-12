@@ -6,6 +6,7 @@ import Solution from './components/Solution';
 import Testimonials from './components/Testimonials';
 import Trust from './components/Trust';
 import UseCases from './components/UseCases';
+import About from './components/About';
 import Assurance from './components/Assurance';
 import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
@@ -21,6 +22,7 @@ function App() {
         <Testimonials />
         <Trust />
         <UseCases />
+        <About />
         <Assurance />
         <FinalCTA />
       </main>

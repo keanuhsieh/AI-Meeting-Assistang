@@ -24,7 +24,7 @@ const FinalCTA: React.FC = () => {
                        最低 NT300。立即開始，一個人一年省下 120天 ，提高會議品質
                     </a>
                     <p className="mt-4 text-sm text-slate-500 flex items-center justify-center">
-                        <GoogleIcon /> 使用 你的Google 帳號安全使用
+                        <GoogleIcon /> 使用你的 Google 帳號安全使用
                     </p>
                 </div>
             </div>
