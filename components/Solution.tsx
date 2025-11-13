@@ -1,4 +1,5 @@
 import React from 'react';
+import Logo from './Logo';
 
 const FeatureCard: React.FC<{ icon: React.ReactNode; title: string; children: React.ReactNode }> = ({ icon, title, children }) => (
     <div 
@@ -23,7 +24,10 @@ const Solution: React.FC = () => {
         <section id="solution" className="py-20 md:py-28 bg-white">
             <div className="container mx-auto px-6">
                 <div className="text-center max-w-3xl mx-auto">
-                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900">您的 Gemini 會議記錄 APP，為何優於 AI 錄音卡、錄音筆？</h2>
+                    <div className="flex justify-center items-center space-x-3">
+                        <Logo variant="outline" className="w-10 h-10 text-orange-600" />
+                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900">您的 Gemini 會議記錄 APP <br />為何比 AI 錄音卡、錄音筆好？</h2>
+                    </div>
                     <p className="mt-4 text-lg text-slate-600">
                         您只需要上傳錄音檔或貼上逐字稿。最強大的 Google Gemini 引擎將自動為您完成：
                     </p>
@@ -48,7 +52,9 @@ const Solution: React.FC = () => {
 
                 <div className="mt-16 max-w-5xl mx-auto grid md:grid-cols-1 lg:grid-cols-3 gap-8">
                     <FeatureCard
-                        icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>}
+                        icon={
+                            <Logo className="w-6 h-6 text-orange-600" />
+                        }
                         title="智慧摘要與主題"
                     >
                         「告別逐字稿。AI 自動萃取『關鍵決策』、『待辦事項』、『後續行動』，直接可用。」

@@ -1,11 +1,14 @@
 import React from 'react';
+import Logo from './Logo';
 
 const Problem: React.FC = () => {
   return (
     <section id="problem" className="py-20 md:py-28 bg-slate-100">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900">在考慮 Plaud ai？先看做會議記錄的成本有多高</h2>
+          <div className="flex justify-center items-center space-x-3">
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900">正在考慮 Plaud ？先比較會議記錄的成本有多高</h2>
+          </div>
         </div>
 
         <div className="mt-16 max-w-4xl mx-auto grid md:grid-cols-3 gap-8 text-center">

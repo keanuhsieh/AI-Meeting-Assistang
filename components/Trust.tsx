@@ -1,4 +1,5 @@
 import React from 'react';
+import Logo from './Logo';
 
 // 這是一個新的 React 元件，專門用來顯示您的 SSL 圖示
 const SslIcon = ({ className }) => (
@@ -28,27 +29,27 @@ const Trust: React.FC = () => {
     const tableData = [
         {
             feature: '資料儲存',
-            ours: '您「個人」的 Google 雲端硬碟',
+            ours: '存在你的 Google 雲端',
             theirs: '廠商的私有雲端',
         },
         {
             feature: 'AI 引擎',
             ours: 'Google Gemini (最強大)',
-            theirs: '未知或中資 AI 模型',
+            theirs: '未知的 AI 模型',
         },
         {
-            feature: '中資風險',
+            feature: '資安風險',
             ours: <span className="text-green-600 font-bold">零 (Zero)</span>,
             theirs: <span className="text-red-600 font-bold">高風險 (High Risk)</span>,
         },
         {
             feature: '硬體成本',
-            ours: '$0 (使用您現有手機)',
+            ours: '$0 (用你的手機現有設備)',
             theirs: '$3,000 - $8,000',
         },
         {
             feature: '月費',
-            ours: '整合 Google 訂閱 (無額外費用)',
+            ours: '整合你的 Google AI 訂閱',
             theirs: '額外 $300 - $600/月',
         },
         {
@@ -58,7 +59,7 @@ const Trust: React.FC = () => {
         },
         {
             feature: '軟體生態系',
-            ours: '超健全的Google生態',
+            ours: '超健全的 Google 生態',
             theirs: '只有廠商自己的軟體',
         },
         {
@@ -72,16 +73,19 @@ const Trust: React.FC = () => {
         <section id="trust" className="py-20 md:py-28 bg-slate-100">
             <div className="container mx-auto px-6">
                 <div className="text-center max-w-4xl mx-auto">
-                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900">告別 Plaud ai 的高昂成本與資安風險</h2>
+                    <div className="flex justify-center items-center space-x-3">
+                        <Logo variant="outline" className="w-10 h-10 text-orange-600" />
+                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900">告別 AI 錄音卡的高昂成本與資安風險</h2>
+                    </div>
                     <p className="mt-4 text-lg text-slate-600">
-                        為什麼公務機關和專業人士信賴我們？因為您的資料，<strong className="text-orange-600">從頭到尾都只在您的 Google 帳號內</strong>。我們絕不碰觸、不儲存。
+                        為什麼公務機關和專業人士信賴我們？ <br />因為您的資料，<strong className="text-orange-600">從頭到尾都只在您的 Google 帳號內</strong>。
                     </p>
                 </div>
 
                 <div id="trust-table" className="mt-16 max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl border border-slate-200">
                     <div className="grid grid-cols-3">
                         <div className="p-4 border-b border-r font-bold text-slate-600 bg-slate-50 rounded-tl-2xl flex items-center justify-center text-center">特性</div>
-                        <div className="p-4 border-b border-r text-slate-800 font-bold bg-orange-100 shadow-xl shadow-orange-500/20 relative z-10 flex items-center justify-center text-center">服務 (Google 整合方案)</div>
+                        <div className="p-4 border-b border-r text-slate-800 font-bold bg-orange-100 shadow-xl shadow-orange-500/20 relative z-10 flex items-center justify-center text-center">Gemini 會議記錄 APP (Google)</div>
                         <div className="p-4 border-b font-bold text-slate-600 bg-slate-50 rounded-tr-2xl flex items-center justify-center text-center">他牌 AI 錄音筆 (中資硬體)</div>
 
                         {tableData.map((row, index) => (
@@ -95,7 +99,7 @@ const Trust: React.FC = () => {
                 </div>
 
                 <div className="mt-16 max-w-4xl mx-auto">
-                    <h3 className="text-2xl font-bold text-center text-slate-800">金流安全夥伴</h3>
+                    <h3 className="text-2xl font-bold text-center text-slate-800">我們的金流安全夥伴：綠界科技</h3>
                       <div className="mt-8 bg-white p-8 rounded-xl shadow-lg border border-slate-200 flex flex-col sm:flex-row justify-center items-center gap-x-12 gap-y-6">
                         <div className="text-center">
                             <img src="https://www.ecpay.com.tw/Content/images/gw_ssl_2.png" alt="ECPay Logo" className="h-16"/>

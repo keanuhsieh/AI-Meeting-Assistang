@@ -1,4 +1,5 @@
 import React from 'react';
+import Logo from './Logo';
 
 const AssuranceCard: React.FC<{ icon: React.ReactNode; title: string; children: React.ReactNode }> = ({ icon, title, children }) => (
     <div 
@@ -21,7 +22,9 @@ const Assurance: React.FC = () => {
         <section id="assurance" className="py-20 md:py-28 bg-slate-100">
             <div className="container mx-auto px-6">
                 <div className="text-center max-w-3xl mx-auto">
-                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900">專業保證與採購方案</h2>
+                    <div className="flex justify-center items-center space-x-3">
+                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900">專業保證與採購方案</h2>
+                    </div>
                     <p className="mt-4 text-lg text-slate-600">
                         我們提供企業與組織最安心的選擇，無論是報帳或大量導入，都為您準備好了。
                     </p>
@@ -29,7 +32,7 @@ const Assurance: React.FC = () => {
                 <div className="mt-16 max-w-5xl mx-auto grid md:grid-cols-1 lg:grid-cols-3 gap-8">
                     <AssuranceCard
                         icon={<svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>}
-                        title="台灣公司，正派經營"
+                        title="台灣在地團隊研發"
                     >
                         我們是依法註冊的台灣公司，您的每一筆消費都可開立發票，方便您報帳核銷。
                     </AssuranceCard>

@@ -1,4 +1,5 @@
 import React from 'react';
+import Logo from './Logo';
 
 const FeatureItem: React.FC<{ icon: React.ReactNode; title: string; children: React.ReactNode }> = ({ icon, title, children }) => (
     <div className="flex items-start space-x-4">
@@ -18,7 +19,10 @@ const About: React.FC = () => {
             <div className="container mx-auto px-6">
                 <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
                     <div className="order-2 md:order-1">
-                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900">我們是 Agent Factory ，您的 Gemini 應用專家</h2>
+                        <div className="flex items-center space-x-3">
+                            <Logo variant="outline" className="w-10 h-10 text-orange-600" />
+                            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">我們是 Agent Factory ，您的 Gemini 應用專家</h2>
+                        </div>
                         <p className="mt-4 text-lg text-slate-600 leading-relaxed">
                             我們專注於正體中文的台灣 AI 應用，致力在 Google 生態系中，為您打造解決「人手不夠、沒時間、嫌麻煩」的 AI 工作夥伴。
                         </p>

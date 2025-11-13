@@ -20,10 +20,10 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 bg-slate-900/70 z-10"></div>
       <div className="relative z-20 container mx-auto px-6 text-center">
         <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight">
-          最強 Plaud 替代方案：Gemini 會議記錄 APP
+          Gemini 會議記錄 APP：一年多出 120 天
         </h1>
         <h2 className="mt-4 text-2xl md:text-3xl font-bold text-orange-400">
-          別浪費 4 小時做會議記錄， 3 分鐘產出會議摘要、待辦工作
+          別浪費 4 小時做會議記錄。 3 分鐘產出會議摘要、待辦工作
         </h2>
         <p className="mt-6 text-lg md:text-xl text-slate-200 max-w-3xl mx-auto">
           公務員與專業人士，用 AI 把會議錄音 
@@ -35,10 +35,10 @@ const Hero: React.FC = () => {
             <a href="https://page.cashier.ecpay.com.tw/forms/cPy2" 
                data-gtm-id="cta-hero"
                className="inline-block bg-orange-600 text-white text-xl font-bold px-12 py-5 rounded-xl shadow-lg hover:bg-orange-700 transform hover:scale-105 transition-all duration-300 hover:shadow-orange-500/50">
-               立即開始，一年省下 120 天。NT300起
+               立即開始！惱人的會議記錄交給 Google
             </a>
             <p className="mt-4 text-sm text-slate-300 flex items-center justify-center">
-               <GoogleIcon /> 使用 你的Google 帳號安全使用
+               <GoogleIcon /> 一切都掌握在 你的 Google 雲端
             </p>
         </div>
       </div>

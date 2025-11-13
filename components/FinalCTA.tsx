@@ -1,4 +1,5 @@
 import React from 'react';
+import Logo from './Logo';
 
 const GoogleIcon: React.FC = () => (
     <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -13,15 +14,18 @@ const FinalCTA: React.FC = () => {
     return (
         <section className="py-20 md:py-32 bg-slate-100">
             <div className="container mx-auto px-6 text-center">
-                <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900">無意義的工作交給 AI，把寶貴的生命留給自己。</h2>
+                <div className="flex justify-center items-center space-x-3">
+                    <Logo variant="outline" className="w-10 h-10 text-orange-600" />
+                    <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900">雜事交給 Gemini 會議記錄 APP <br />寶貴的時間留給自己。</h2>
+                </div>
                 <p className="mt-4 text-lg md:text-xl text-slate-600 max-w-2xl mx-auto">
-                    立即開始，體驗 3 分鐘完成會議摘要。您只需要一個 Google 帳號。
+                    立即開始，體驗 3 分鐘完成會議記錄。您只需要一個 Google 帳號。
                 </p>
                 <div className="mt-10">
                     <a href="https://page.cashier.ecpay.com.tw/forms/cPy2" 
                        data-gtm-id="cta-final"
                        className="inline-block bg-orange-600 text-white text-xl font-bold px-12 py-5 rounded-xl shadow-lg hover:bg-orange-700 transform hover:scale-105 transition-all duration-300 hover:shadow-orange-500/50">
-                       最低 NT300。立即開始，一個人一年省下 120天 ，提高會議品質
+                       最低 NT300。立即開始，一個人一年省下 120天，提高會議品質
                     </a>
                     <p className="mt-4 text-sm text-slate-500 flex items-center justify-center">
                         <GoogleIcon /> 使用你的 Google 帳號安全使用

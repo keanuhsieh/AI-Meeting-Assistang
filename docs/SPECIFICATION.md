@@ -2,7 +2,7 @@
 
 ---
 - **專案名稱:** AI 會議助理一頁式銷售網站 (Project A)
-- **文件版本:** 1.0.4
+- **文件版本:** 1.0.6
 - **最後更新:** 2025-11-13
 - **基於專案:** N/A (此為初始專案)
 ---
@@ -95,7 +95,7 @@
 
 #### 4.1.2 實作規範 (Implementation Mandate)
 - **結構與行為固定:** Header 的 JSX 結構、自動隱藏的邏輯 **必須** 保持固定。
-- **可變動項目:** 允許修改 Logo (SVG)、產品名稱文字、CTA 連結，以及磨砂玻璃效果的**顏色與強度**，以適應不同專案的品牌風格。
+- **可變動項目:** 允許修改 Logo (`<Logo />` 元件)、產品名稱文字、CTA 連結，以及磨砂玻璃效果的**顏色與強度**，以適應不同專案的品牌風格。
 
 ### 4.2 Problem
 - **用途:** 呈現使用者痛點，並透過成本分析卡片凸顯競品 (Plaud Note) 的長期持有成本。
@@ -116,7 +116,7 @@
 **金流安全夥伴區塊程式碼片段 (Required Snippet):**
 ```jsx
 <div className="mt-16 max-w-4xl mx-auto">
-    <h3 className="text-2xl font-bold text-center text-slate-800">金流安全夥伴</h3>
+    <h3 className="text-2xl font-bold text-center text-slate-800">我們的金流安全夥伴：綠界科技</h3>
       <div className="mt-8 bg-white p-8 rounded-xl shadow-lg border border-slate-200 flex flex-col sm:flex-row justify-center items-center gap-x-12 gap-y-6">
         <div className="text-center">
             <img src="https://www.ecpay.com.tw/Content/images/gw_ssl_2.png" alt="ECPay Logo" className="h-16"/>
@@ -140,7 +140,10 @@
     <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="order-2 md:order-1">
-                <h2 className="text-3xl md:text-4xl font-bold text-slate-900">我們是 Agent Factory ，您的 Gemini 應用專家</h2>
+                <div className="flex items-center space-x-3">
+                    <Logo variant="outline" className="w-10 h-10 text-orange-600" />
+                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900">我們是 Agent Factory ，您的 Gemini 應用專家</h2>
+                </div>
                 <p className="mt-4 text-lg text-slate-600 leading-relaxed">
                     我們專注於正體中文的台灣 AI 應用，致力在 Google 生態系中，為您打造解決「人手不夠、沒時間、嫌麻煩」的 AI 工作夥伴。
                 </p>
@@ -171,20 +174,32 @@
 <section id="assurance" className="py-20 md:py-28 bg-slate-100">
     <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">專業保證與採購方案</h2>
+            <div className="flex justify-center items-center space-x-3">
+                <Logo variant="outline" className="w-10 h-10 text-orange-600" />
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-900">專業保證與採購方案</h2>
+            </div>
             <p className="mt-4 text-lg text-slate-600">
                 我們提供企業與組織最安心的選擇，無論是報帳或大量導入，都為您準備好了。
             </p>
         </div>
         <div className="mt-16 max-w-5xl mx-auto grid md:grid-cols-1 lg:grid-cols-3 gap-8">
-            <AssuranceCard title="台灣公司，正派經營">
-                我們是依法註冊的台灣公司，您的每一筆消費都可開立發票，方便您報帳核銷。
+            <AssuranceCard
+                        icon={<svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>}
+                        title="台灣在地團隊研發"
+                    >
+                        我們是依法註冊的台灣公司，您的每一筆消費都可開立發票，方便您報帳核銷。
             </AssuranceCard>
-            <AssuranceCard title="歡迎大量採購">
-                支援政府、企業、機關團體的大量採購方案 ( 50 組以上) ，請聯繫我們 LINE 取得客製化報價單。
+            <AssuranceCard
+                        icon={<svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>}
+                        title="歡迎大量採購"
+                    >
+                        支援政府、企業、機關團體的大量採購方案 ( 50 組以上) ，請聯繫我們 LINE 取得客製化報價單。
             </AssuranceCard>
-            <AssuranceCard title="贈送企業內部訓練">
-                單一機關或企業採購達 200 組以上，我們將免費提供一場內部線上訓練，確保導入效益最大化。
+            <AssuranceCard
+                        icon={<svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 14l9-5-9-5-9 5 9 5z" /><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-5.998 12.078 12.078 0 01.665-6.479L12 14z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0v6" /></svg>}
+                        title="贈送企業內部訓練"
+                    >
+                        單一機關或企業採購達 200 組以上，我們將免費提供一場內部線上訓練，確保導入效益最大化。
             </AssuranceCard>
         </div>
     </div>
@@ -198,6 +213,54 @@
 
 ### 5.2 圖片 (Images)
 - **慣例:** 本專案系列允許使用外部圖片連結 (例如 `wixstatic.com`, `pravatar.cc`, `ecpay.com.tw`)。
+
+### 5.3 品牌 Logo (Brand Logo)
+- **用途:** 作為「Gemini 會議記錄 APP」的官方品牌識別標誌。
+- **實作方式:** 使用一個可重複使用的 `Logo.tsx` 元件，以確保全站視覺統一。
+
+#### 5.3.1 實作規範 (Implementation Mandate)
+- **強制使用元件:** 所有需要顯示 Logo 的地方 **必須** 使用 `<Logo />` 元件。
+- **元件 API:**
+  - `variant?: 'default' | 'outline'`:
+    - `'default'` (預設): **橘色填充、白色線條**。適用於深色或有色背景 (如 Header)。
+    - `'outline'`: **透明填充、橘色外框、深灰內線**。適用於淺色背景 (如各 Section 標題前)。
+  - `className?: string`: 用於傳遞 Tailwind CSS class，主要用於控制尺寸 (e.g., `w-8 h-8`) 和顏色 (`text-orange-600`)。
+- **程式碼 (`components/Logo.tsx`):**
+  ```jsx
+  import React from 'react';
+
+  interface LogoProps {
+    variant?: 'default' | 'outline';
+    className?: string;
+  }
+
+  const Logo: React.FC<LogoProps> = ({ variant = 'default', className = 'w-8 h-8' }) => {
+    if (variant === 'outline') {
+      return (
+        <svg className={className} fill="none" viewBox="0 0 24 24">
+          <rect x="6" y="4" width="13" height="17" rx="2" stroke="currentColor" strokeWidth="1.2"/>
+          <path d="M15 10V8" stroke="#334155" strokeWidth="1.2" strokeLinecap="round"/>
+          <path d="M4 9H8" stroke="#334155" strokeWidth="1.2" strokeLinecap="round"/>
+          <path d="M4 13H8" stroke="#334155" strokeWidth="1.2" strokeLinecap="round"/>
+          <path d="M4 17H8" stroke="#334155" strokeWidth="1.2" strokeLinecap="round"/>
+        </svg>
+      );
+    }
+
+    // Default variant
+    return (
+      <svg className={className} fill="none" viewBox="0 0 24 24">
+          <rect x="6" y="4" width="13" height="17" rx="2" fill="currentColor"/>
+          <path d="M15 10V8" stroke="white" strokeWidth="1.2" strokeLinecap="round"/>
+          <path d="M4 9H8" stroke="white" strokeWidth="1.2" strokeLinecap="round"/>
+          <path d="M4 13H8" stroke="white" strokeWidth="1.2" strokeLinecap="round"/>
+          <path d="M4 17H8" stroke="white" strokeWidth="1.2" strokeLinecap="round"/>
+      </svg>
+    );
+  };
+
+  export default Logo;
+  ```
 
 ## 6. 部署與營運 (Deployment & Operations)
 - **部署流程:** Push to `main` branch on GitHub -> Triggers Netlify build & deploy.

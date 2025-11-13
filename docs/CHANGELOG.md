@@ -2,6 +2,28 @@
 
 所有此專案的重要變更都將記錄在此檔案中。
 
+## [1.0.15] - 2025-11-13
+
+### Added
+- **Component:** 建立了一個全新的、可自適應背景的 `Logo.tsx` 元件，包含 `default` (全彩) 和 `outline` (線條) 兩種模式。
+
+### Changed
+- **Brand Identity:** 全面將新的自適應 Logo 應用於網站所有主要區塊的標題前，以極大化品牌視覺的一致性與重複性。
+- **Refactor:** 重構 `Header` 與 `Solution` 元件，改為使用新的 `Logo` 元件，以簡化維護。
+
+## [1.0.14] - 2025-11-13
+
+### Added
+- **Brand Identity:** 導入全新的「橘色筆記本」全彩 Logo，以建立統一且專業的品牌視覺識別。
+
+### Changed
+- **UI Update:** 全面將網站的 Logo 更新為新的品牌標識，包含頂部導覽列 (`Header`)、瀏覽器分頁圖示 (`Favicon`)，以及 `Solution` 區塊中的「智慧摘要」圖示。
+
+## [1.0.13] - 2025-11-13
+
+### Changed
+- **SEO Enhancement:** 全面優化網站的 SEO 元素以對齊新品牌名稱「Gemini 會議記錄 APP」。更新了 `index.html` 的 Title, Meta Description, JSON-LD，以及 Hero 區塊的 H1 標籤，以最大化搜尋引擎可見度。
+
 ## [1.0.12] - 2025-11-13
 
 ### Changed

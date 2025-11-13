@@ -1,4 +1,5 @@
 import React from 'react';
+import Logo from './Logo';
 
 const testimonials = [
     {
@@ -94,8 +95,10 @@ const Testimonials: React.FC = () => {
     return (
         <section id="testimonials" className="py-20 md:py-28 bg-slate-50">
             <div className="container mx-auto px-6 text-center">
-                <h2 className="text-3xl md:text-4xl font-bold text-slate-900">聽聽我們的用戶怎麼說</h2>
-                <p className="mt-4 text-lg text-slate-600">從各行各業的專業人士，到政府機關公務員，因為 AI 會議助理 而改變工作模式。</p>
+                <div className="flex justify-center items-center space-x-3">
+                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900">聽聽我們的用戶怎麼說</h2>
+                </div>
+                <p className="mt-4 text-lg text-slate-600">從各行各業的專業人士，到政府機關公務員，因為 Gemini 會議記錄 APP 而改變工作模式。</p>
             </div>
             <div className="mt-16 relative w-full overflow-hidden">
                 <div className="flex flex-nowrap animate-marquee w-max">
