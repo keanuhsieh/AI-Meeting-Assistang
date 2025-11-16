@@ -21,10 +21,10 @@ const About: React.FC = () => {
                     <div className="order-2 md:order-1">
                         <div className="flex items-center space-x-3">
                             <Logo variant="outline" className="w-10 h-10 text-orange-600" />
-                            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">我們是 Agent Factory ，您的 Gemini 應用專家</h2>
+                            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">我們是 Agent Factory <br />您的 Gemini 應用專家</h2>
                         </div>
                         <p className="mt-4 text-lg text-slate-600 leading-relaxed">
-                            我們專注於正體中文的台灣 AI 應用，致力在 Google 生態系中，為您打造解決「人手不夠、沒時間、嫌麻煩」的 AI 工作夥伴。
+                            Agent Factory 是孵大學的 AI 業務之一，專注於正體中文的 AI 應用，致力在 Google 生態系中，為您打造解決「人手不夠、沒時間、嫌麻煩」的 AI 工作夥伴。
                         </p>
                         <div className="mt-8 space-y-6">
                             <FeatureItem

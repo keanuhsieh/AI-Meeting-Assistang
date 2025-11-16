@@ -20,14 +20,14 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 bg-slate-900/70 z-10"></div>
       <div className="relative z-20 container mx-auto px-6 text-center">
         <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight">
-          Gemini 會議記錄 APP：一年多出 120 天
+          Gemini 會議記錄 APP <br /> 為你一年省下 120 天
         </h1>
         <h2 className="mt-4 text-2xl md:text-3xl font-bold text-orange-400">
           別浪費 4 小時做會議記錄。 3 分鐘產出會議摘要、待辦工作
         </h2>
         <p className="mt-6 text-lg md:text-xl text-slate-200 max-w-3xl mx-auto">
           公務員與專業人士，用 AI 把會議錄音 
-          <span className="font-bold bg-yellow-300 text-slate-900 px-2 py-1 rounded">【安全地】</span>
+          <span className="font-bold bg-yellow-300 text-slate-900 px-2 py-1 rounded">安全低成本</span> <br />
            轉為逐字稿、會議記錄，存在 Google 雲端硬碟。
         </p>
 

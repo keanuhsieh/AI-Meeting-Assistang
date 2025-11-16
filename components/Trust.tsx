@@ -1,8 +1,8 @@
 import React from 'react';
 import Logo from './Logo';
 
-// 這是一個新的 React 元件，專門用來顯示您的 SSL 圖示
-const SslIcon = ({ className }) => (
+// This is a new React component for your SSL icon
+const SslIcon = ({ className }: { className?: string }) => (
   <svg 
     className={className} 
     viewBox="0 0 600 450" 
@@ -31,41 +31,49 @@ const Trust: React.FC = () => {
             feature: '資料儲存',
             ours: '存在你的 Google 雲端',
             theirs: '廠商的私有雲端',
+            manual: '你的電腦、隨身碟',
         },
         {
             feature: 'AI 引擎',
             ours: 'Google Gemini (最強大)',
             theirs: '未知的 AI 模型',
+            manual: '無 (人工聽打)',
         },
         {
             feature: '資安風險',
             ours: <span className="text-green-600 font-bold">零 (Zero)</span>,
             theirs: <span className="text-red-600 font-bold">高風險 (High Risk)</span>,
+            manual: '低 (遺失、忘記密碼)',
         },
         {
             feature: '硬體成本',
             ours: '$0 (用你的手機現有設備)',
             theirs: '$3,000 - $8,000',
+            manual: '$0',
         },
         {
             feature: '月費',
-            ours: '整合你的 Google AI 訂閱',
+            ours: '$0 (超過免費額度才需訂閱)',
             theirs: '額外 $300 - $600/月',
+            manual: '$0',
         },
         {
-            feature: '總使用成本',
-            ours: <span className="text-2xl" title="最低">💰💰</span>,
-            theirs: <span className="text-2xl" title="最高">💰💰💰💰💰💰</span>,
+            feature: '一年總成本',
+            ours: '最低 NT$300',
+            theirs: <span className="text-red-600 font-bold">貴！NT 17,000</span>,
+            manual: <span className="text-red-600 font-bold">極貴！NT 182,400 (人事成本)</span>,
         },
         {
             feature: '軟體生態系',
             ours: '超健全的 Google 生態',
             theirs: '只有廠商自己的軟體',
+            manual: '無 (純手動)',
         },
         {
             feature: '整合性',
             ours: '極高 (你的 Google 雲端硬碟)',
             theirs: '極低 (資料庫各自獨立)',
+            manual: '極低 (WORD複製貼上)',
         }
     ];
 
@@ -75,24 +83,26 @@ const Trust: React.FC = () => {
                 <div className="text-center max-w-4xl mx-auto">
                     <div className="flex justify-center items-center space-x-3">
                         <Logo variant="outline" className="w-10 h-10 text-orange-600" />
-                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900">告別 AI 錄音卡的高昂成本與資安風險</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900">各種會議記錄方式的成本比較(含Plaud AI) <br />告別會議記錄、逐字稿的高昂成本與風險</h2>
                     </div>
                     <p className="mt-4 text-lg text-slate-600">
                         為什麼公務機關和專業人士信賴我們？ <br />因為您的資料，<strong className="text-orange-600">從頭到尾都只在您的 Google 帳號內</strong>。
                     </p>
                 </div>
 
-                <div id="trust-table" className="mt-16 max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl border border-slate-200">
-                    <div className="grid grid-cols-3">
+                <div id="trust-table" className="mt-16 max-w-6xl mx-auto bg-white rounded-2xl shadow-2xl border border-slate-200">
+                    <div className="grid grid-cols-4">
                         <div className="p-4 border-b border-r font-bold text-slate-600 bg-slate-50 rounded-tl-2xl flex items-center justify-center text-center">特性</div>
                         <div className="p-4 border-b border-r text-slate-800 font-bold bg-orange-100 shadow-xl shadow-orange-500/20 relative z-10 flex items-center justify-center text-center">Gemini 會議記錄 APP (Google)</div>
-                        <div className="p-4 border-b font-bold text-slate-600 bg-slate-50 rounded-tr-2xl flex items-center justify-center text-center">他牌 AI 錄音筆 (中資硬體)</div>
+                        <div className="p-4 border-b border-r font-bold text-slate-600 bg-slate-50 flex items-center justify-center text-center">他牌 AI 錄音筆 (中資硬體)</div>
+                        <div className="p-4 border-b font-bold text-slate-600 bg-slate-50 rounded-tr-2xl flex items-center justify-center text-center">你現在的記錄方式</div>
 
                         {tableData.map((row, index) => (
                             <React.Fragment key={index}>
                                 <div className={`p-4 border-b border-r font-semibold text-slate-700 bg-slate-50 flex items-center justify-center text-center ${index === tableData.length - 1 ? 'rounded-bl-2xl' : ''}`}>{row.feature}</div>
-                                <div className={`p-4 border-b border-r text-slate-800 font-semibold bg-orange-50 shadow-xl shadow-orange-500/20 h-full flex items-center justify-center text-center relative z-10 ${index === tableData.length - 1 ? '' : ''}`}>{row.ours}</div>
-                                <div className={`p-4 border-b text-slate-600 flex items-center justify-center text-center ${index === tableData.length - 1 ? 'rounded-br-2xl' : ''}`}>{row.theirs}</div>
+                                <div className={`p-4 border-b border-r text-slate-800 font-semibold bg-orange-50 shadow-xl shadow-orange-500/20 h-full flex items-center justify-center text-center relative z-10`}>{row.ours}</div>
+                                <div className={`p-4 border-b border-r text-slate-600 flex items-center justify-center text-center`}>{row.theirs}</div>
+                                <div className={`p-4 border-b text-slate-600 flex items-center justify-center text-center ${index === tableData.length - 1 ? 'rounded-br-2xl' : ''}`}>{row.manual}</div>
                             </React.Fragment>
                         ))}
                     </div>

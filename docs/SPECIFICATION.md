@@ -213,6 +213,15 @@
 
 ### 5.2 圖片 (Images)
 - **慣例:** 本專案系列允許使用外部圖片連結 (例如 `wixstatic.com`, `pravatar.cc`, `ecpay.com.tw`)。
+- **託管平台:** 所有專案使用的行銷圖片（例如 Hero 背景、團隊照片、用戶照片）**必須**統一託管於 Wix 平台的媒體庫中，以確保資源的集中管理與載入效能。
+
+#### 5.2.1 圖片更新工作流程 (Image Update Workflow)
+為確保圖片資源的一致性與順暢的協作，所有圖片的替換作業**必須**遵循以下流程：
+
+1.  **建立專屬資料夾:** 由專案關係人（客戶、PM）在 Wix 媒體庫中，為該專案建立一個專屬的資料夾。
+2.  **上傳圖片:** 專案關係人將所有最終版圖片上傳至該專屬資料夾。
+3.  **提供網址:** 專案關係人將每張圖片的公開存取網址（URL）整理好，提供給開發者。
+4.  **程式碼替換:** 開發者根據收到的網址清單，逐一替換掉專案程式碼中對應的佔位圖片或舊圖片。
 
 ### 5.3 品牌 Logo (Brand Logo)
 - **用途:** 作為「Gemini 會議記錄 APP」的官方品牌識別標誌。
@@ -261,6 +270,12 @@
 
   export default Logo;
   ```
+
+#### 5.3.2 LOGO 設計流程 (LOGO Design Workflow)
+1. **靈感來源 (Inspiration Source):** 所有 Logo 與 SVG 設計，應優先參考 [Let's Duotone Line Icons collection](https://www.svgrepo.com/collection/lets-duotone-line-icons/) 作為設計基礎。
+2. **基礎選定 (Base Selection):** 與專案關係人（客戶、PM）溝通，提供上述連結，由其挑選最符合專案精神的 SVG 圖示。
+3. **資源匯入 (Asset Import):** 將選定的 SVG 檔案下載並上傳至專案的根目錄，作為後續修改的原始檔。
+4. **客製化調整 (Customization):** 基於匯入的 SVG 檔案，根據專案的設計系統（顏色、風格）進行調整，例如修改填充色、線條顏色與粗細，最終完成 `Logo.tsx` 元件的程式碼。
 
 ## 6. 部署與營運 (Deployment & Operations)
 - **部署流程:** Push to `main` branch on GitHub -> Triggers Netlify build & deploy.
