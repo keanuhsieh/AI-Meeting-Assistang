@@ -78,7 +78,14 @@ const TestimonialCard: React.FC<typeof testimonials[0]> = ({ quote, name, title,
     <div className="flex-shrink-0 w-[350px] bg-white p-6 rounded-xl shadow-lg border border-slate-200 mx-4">
         <p className="text-slate-700 italic">"{quote}"</p>
         <div className="mt-4 flex items-center">
-            <img className="w-12 h-12 rounded-full object-cover" src={avatar} alt={name} />
+            <img 
+                className="w-12 h-12 rounded-full object-cover" 
+                src={avatar} 
+                alt={name} 
+                width="48" 
+                height="48" 
+                loading="lazy" 
+            />
             <div className="ml-4">
                 <p className="font-bold text-slate-900">{name}</p>
                 <p className="text-sm text-slate-500">{title}</p>

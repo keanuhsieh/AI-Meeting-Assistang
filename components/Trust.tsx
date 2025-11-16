@@ -90,22 +90,27 @@ const Trust: React.FC = () => {
                     </p>
                 </div>
 
-                <div id="trust-table" className="mt-16 max-w-6xl mx-auto bg-white rounded-2xl shadow-2xl border border-slate-200">
-                    <div className="grid grid-cols-4">
-                        <div className="p-4 border-b border-r font-bold text-slate-600 bg-slate-50 rounded-tl-2xl flex items-center justify-center text-center">特性</div>
-                        <div className="p-4 border-b border-r text-slate-800 font-bold bg-orange-100 shadow-xl shadow-orange-500/20 relative z-10 flex items-center justify-center text-center">Gemini 會議記錄 APP (Google)</div>
-                        <div className="p-4 border-b border-r font-bold text-slate-600 bg-slate-50 flex items-center justify-center text-center">他牌 AI 錄音筆 (中資硬體)</div>
-                        <div className="p-4 border-b font-bold text-slate-600 bg-slate-50 rounded-tr-2xl flex items-center justify-center text-center">你現在的記錄方式</div>
-
-                        {tableData.map((row, index) => (
-                            <React.Fragment key={index}>
-                                <div className={`p-4 border-b border-r font-semibold text-slate-700 bg-slate-50 flex items-center justify-center text-center ${index === tableData.length - 1 ? 'rounded-bl-2xl' : ''}`}>{row.feature}</div>
-                                <div className={`p-4 border-b border-r text-slate-800 font-semibold bg-orange-50 shadow-xl shadow-orange-500/20 h-full flex items-center justify-center text-center relative z-10`}>{row.ours}</div>
-                                <div className={`p-4 border-b border-r text-slate-600 flex items-center justify-center text-center`}>{row.theirs}</div>
-                                <div className={`p-4 border-b text-slate-600 flex items-center justify-center text-center ${index === tableData.length - 1 ? 'rounded-br-2xl' : ''}`}>{row.manual}</div>
-                            </React.Fragment>
-                        ))}
-                    </div>
+                <div id="trust-table" className="mt-16 max-w-6xl mx-auto bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden">
+                    <table className="w-full">
+                        <thead className="bg-slate-50">
+                            <tr>
+                                <th className="p-4 border-b border-r font-bold text-slate-600 text-center">特性</th>
+                                <th className="p-4 border-b border-r text-slate-800 font-bold bg-orange-100 shadow-xl shadow-orange-500/20 relative z-10 text-center">Gemini 會議記錄 APP (Google)</th>
+                                <th className="p-4 border-b border-r font-bold text-slate-600 text-center">他牌 AI 錄音筆 (中資硬體)</th>
+                                <th className="p-4 border-b font-bold text-slate-600 text-center">你現在的記錄方式</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {tableData.map((row, index) => (
+                                <tr key={index}>
+                                    <td className="p-4 border-b border-r font-semibold text-slate-700 bg-slate-50 text-center">{row.feature}</td>
+                                    <td className="p-4 border-b border-r text-slate-800 font-semibold bg-orange-50 shadow-xl shadow-orange-500/20 text-center relative z-10">{row.ours}</td>
+                                    <td className="p-4 border-b border-r text-slate-600 text-center">{row.theirs}</td>
+                                    <td className={`p-4 border-b text-slate-600 text-center`}>{row.manual}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
 
                 <div className="mt-16 max-w-4xl mx-auto">

@@ -22,14 +22,17 @@ const Hero: React.FC = () => {
         <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight">
           Gemini 會議記錄 APP <br /> 為你一年省下 120 天
         </h1>
-        <h2 className="mt-4 text-2xl md:text-3xl font-bold text-orange-400">
-          別浪費 4 小時做會議記錄。 3 分鐘產出會議摘要、待辦工作
-        </h2>
-        <p className="mt-6 text-lg md:text-xl text-slate-200 max-w-3xl mx-auto">
-          公務員與專業人士，用 AI 把會議錄音 
-          <span className="font-bold bg-yellow-300 text-slate-900 px-2 py-1 rounded">安全低成本</span> <br />
-           轉為逐字稿、會議記錄，存在 Google 雲端硬碟。
-        </p>
+        
+        <div className="mt-6 max-w-3xl mx-auto bg-slate-800/50 backdrop-blur-sm p-4 rounded-lg border border-orange-400/50">
+          <h2 className="text-2xl md:text-3xl font-bold text-orange-400">
+            別浪費 4 小時做會議記錄。 <br /> 3 分鐘產出會議摘要、待辦工作
+          </h2>
+          <p className="mt-4 text-lg text-slate-200">
+            公務員與專業人士，用 AI 把會議錄音 
+            <span className="font-bold bg-yellow-300 text-slate-900 px-2 py-1 rounded">安全低成本</span>
+              <br /> 轉為逐字稿、會議記錄，存在 Google 雲端硬碟。
+          </p>
+        </div>
 
         <div id="cta" className="mt-12">
             <a href="https://page.cashier.ecpay.com.tw/forms/cPy2" 

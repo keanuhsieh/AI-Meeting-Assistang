@@ -2,6 +2,19 @@
 
 所有此專案的重要變更都將記錄在此檔案中。
 
+## [1.0.17] - 2025-11-15
+
+### Added
+- **AEO: FAQ Section:** 新增全新的 `FAQ.tsx` 元件與對應的 `FAQPage` JSON-LD 結構化資料，直接回答用戶關於安全性、費用、使用方式與競品比較的四大核心問題。
+- **SEO: Organization Schema:** 在 `index.html` 中新增 `Organization` 結構化資料，以建立品牌權威性。
+- **SEO: Canonical Tag:** 在 `index.html` 中新增 `rel="canonical"` 標籤，以避免重複內容問題。
+
+### Changed
+- **AEO: Direct Answer:** 重構 `Hero.tsx`，將 H1 下方的副標題與說明文字整合為一個更明確的「答案置頂」元件，以優化答案引擎擷取。
+- **SEO: Semantic HTML:** 將 `Trust.tsx` 中的比較表從 `div` 佈局重構為語意化的 `<table>` 結構，提升了可訪問性與爬蟲可讀性，同時保持視覺外觀不變。
+- **SEO: Image Optimization:** 為 `Testimonials.tsx` 中的所有用戶頭像 `<img>` 標籤添加了 `width`, `height` 和 `loading="lazy"` 屬性，以改善 Core Web Vitals (CLS & LCP)。
+- **AEO: Review Schema:** 在 `SoftwareApplication` 結構化資料中，嵌入了前三則客戶見證作為 `Review` 項目，以增強信任訊號。
+
 ## [1.0.16] - 2025-11-14
 
 ### Changed
