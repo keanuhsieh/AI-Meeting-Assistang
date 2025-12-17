@@ -2,6 +2,16 @@
 
 所有此專案的重要變更都將記錄在此檔案中。
 
+## [1.0.19] - 2025-11-15
+
+### Changed
+- **SEO Fix (Favicon):** 將 Favicon 從 Data URI 改為實體檔案 (`/favicon.svg`)，以解決 Google 搜尋結果無法顯示網站圖示的問題，並提升爬蟲索引效率。
+
+## [1.0.18] - 2025-11-15
+
+### Added
+- **System Instructions:** 新增 `docs/SYSTEM_INSTRUCTIONS.md`，將 AI Agent 的行為準則、兩階段工作流（計畫書 -> 執行）以及強制性規範文件化，確保開發一致性。
+
 ## [1.0.17] - 2025-11-15
 
 ### Added

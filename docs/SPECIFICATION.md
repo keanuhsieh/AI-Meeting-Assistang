@@ -277,6 +277,10 @@
 3. **資源匯入 (Asset Import):** 將選定的 SVG 檔案下載並上傳至專案的根目錄，作為後續修改的原始檔。
 4. **客製化調整 (Customization):** 基於匯入的 SVG 檔案，根據專案的設計系統（顏色、風格）進行調整，例如修改填充色、線條顏色與粗細，最終完成 `Logo.tsx` 元件的程式碼。
 
+### 5.4 網站圖示 (Favicon)
+- **要求:** 為了確保 Google 搜尋引擎與各類爬蟲能正確索引，Favicon **必須** 以實體檔案（`.svg` 或 `.png`）的形式存在於 `public/` 目錄下。
+- **禁止:** 嚴禁在 `index.html` 中使用 Data URI (Base64) 格式的 Favicon。
+
 ## 6. 部署與營運 (Deployment & Operations)
 - **部署流程:** Push to `main` branch on GitHub -> Triggers Netlify build & deploy.
 - **環境變數:** 無。
