@@ -2,7 +2,7 @@
 
 ---
 - **專案名稱:** AI 會議助理一頁式銷售網站 (Project A)
-- **文件版本:** 1.0.7
+- **文件版本:** 1.0.8
 - **最後更新:** 2025-11-15
 - **基於專案:** N/A (此為初始專案)
 ---
@@ -139,6 +139,7 @@
 
 ### 5.4 網站圖示 (Favicon)
 - **要求:** 必須以實體檔案（`.svg` 或 `.png`）的形式存在於 `public/` 目錄下。
+- **SEO 規範:** 為了確保 Google 搜尋結果能正確顯示圖示，`index.html` 必須包含 `apple-touch-icon` (指向 SVG 或高品質 PNG) 以及 `mask-icon` (針對 Safari)。
 
 ## 6. 部署與營運 (Deployment & Operations)
 - **部署流程:** Push to `main` branch on GitHub -> Triggers Netlify build & deploy.

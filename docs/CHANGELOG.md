@@ -2,6 +2,11 @@
 
 所有此專案的重要變更都將記錄在此檔案中。
 
+## [1.0.22] - 2025-11-15
+
+### Fixed
+- **Google Search Icon:** 修復 Google 搜尋結果無法抓取網站圖示的問題。新增 `apple-touch-icon` 與 `mask-icon` 宣告，並優化 `favicon.svg` 的引用屬性 (`sizes="any"`)，強制 Googlebot 將其識別為高品質來源。
+
 ## [1.0.21] - 2025-11-15
 
 ### Fixed
