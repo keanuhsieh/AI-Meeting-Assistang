@@ -25,9 +25,14 @@ const FinalCTA: React.FC = () => {
                     <a href="https://page.cashier.ecpay.com.tw/forms/cPy2" 
                        data-gtm-id="cta-final"
                        className="inline-block bg-orange-600 text-white text-xl font-bold px-12 py-5 rounded-xl shadow-lg hover:bg-orange-700 transform hover:scale-105 transition-all duration-300 hover:shadow-orange-500/50">
-                       最低 NT300。立即開始，一個人一年省下 120天，提高會議品質
+                       立即開始，提高會議品質，一個人一年省下 120 天！
                     </a>
-                    <p className="mt-4 text-sm text-slate-500 flex items-center justify-center">
+                    
+                    <p className="mt-6 text-slate-700 font-medium italic">
+                        「算完 Plaud 的年費後，我立刻決定買這個。」— 蔡顧問
+                    </p>
+                    
+                    <p className="mt-6 text-sm text-slate-500 flex items-center justify-center">
                         <GoogleIcon /> 使用你的 Google 帳號安全使用
                     </p>
                 </div>

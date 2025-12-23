@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const GoogleIcon: React.FC = () => (
     <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -9,8 +9,23 @@ const GoogleIcon: React.FC = () => (
     </svg>
 );
 
+const miniTestimonials = [
+    { name: "林經理", rating: 5.0, text: "這是我用過最超值的 AI 工具。" },
+    { name: "王律師", rating: 5.0, text: "錄音在自己的 Google 雲端才放心。" },
+    { name: "張股長", rating: 4.8, text: "比買 Plaud 硬體省下萬元的預算。" },
+    { name: "蔡顧問", rating: 4.9, text: "算完 Plaud 年費，立刻決定買這個。" },
+];
 
 const Hero: React.FC = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % miniTestimonials.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section 
       id="hero" 
@@ -40,7 +55,23 @@ const Hero: React.FC = () => {
                className="inline-block bg-orange-600 text-white text-xl font-bold px-12 py-5 rounded-xl shadow-lg hover:bg-orange-700 transform hover:scale-105 transition-all duration-300 hover:shadow-orange-500/50">
                立即開始！惱人的會議記錄交給 Google
             </a>
-            <p className="mt-4 text-sm text-slate-300 flex items-center justify-center">
+            
+            {/* 改進後的淡入淡出見證 */}
+            <div className="mt-6 relative h-6 flex items-center justify-center">
+                {miniTestimonials.map((item, idx) => (
+                    <div 
+                        key={idx} 
+                        className={`absolute flex items-center text-orange-300 font-medium transition-opacity duration-1000 ease-in-out ${idx === currentIndex ? 'opacity-100' : 'opacity-0'}`}
+                    >
+                        <span className="mr-2">{"⭐".repeat(Math.floor(item.rating))}</span>
+                        <span className="text-sm">{item.rating.toFixed(1)}</span>
+                        <span className="mx-2 text-slate-400">|</span>
+                        <span className="text-sm italic text-slate-100">{item.name}：{item.text}</span>
+                    </div>
+                ))}
+            </div>
+
+            <p className="mt-8 text-sm text-slate-300 flex items-center justify-center">
                <GoogleIcon /> 一切都掌握在 你的 Google 雲端
             </p>
         </div>
