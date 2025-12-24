@@ -29,7 +29,7 @@ const FinalCTA: React.FC = () => {
                     <a href="https://page.cashier.ecpay.com.tw/forms/cPy2" 
                        data-gtm-id="cta-final"
                        className="inline-block bg-orange-600 text-white text-xl font-bold px-12 py-5 rounded-xl shadow-lg hover:bg-orange-700 transform hover:scale-105 transition-all duration-300 hover:shadow-orange-500/50">
-                       {price ? `${price}元 一口價！立即開始，提高會議品質，一個人一年省下 120 天！` : "立即開始，提高會議品質，一個人一年省下 120 天！"}
+                       {price ? `${price}元 一口價買斷免訂閱！立即開始，提高會議品質，一個人一年省下 120 天！` : "買斷免訂閱！立即開始，提高會議品質，一個人一年現賺 120 天！"}
                     </a>
                     
                     <p className="mt-6 text-slate-700 font-medium italic">

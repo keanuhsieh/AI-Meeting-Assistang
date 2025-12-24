@@ -56,7 +56,7 @@ const Hero: React.FC = () => {
             <a href="https://page.cashier.ecpay.com.tw/forms/cPy2" 
                data-gtm-id="cta-hero"
                className="inline-block bg-orange-600 text-white text-xl font-bold px-12 py-5 rounded-xl shadow-lg hover:bg-orange-700 transform hover:scale-105 transition-all duration-300 hover:shadow-orange-500/50">
-               {price ? `${price}元 一口價！立刻將會議記錄交給 Google AI` : "立即開始！會議記錄交給 Google AI"}
+               {price ? `${price}元 一口價買斷免訂閱！會議記錄交給 Google AI` : "買斷免訂閱！立刻將會議記錄交給 Google AI"}
             </a>
             
             {/* 改進後的淡入淡出見證 */}
