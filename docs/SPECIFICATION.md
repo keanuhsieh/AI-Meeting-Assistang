@@ -2,8 +2,8 @@
 
 ---
 - **專案名稱:** AI 會議助理一頁式銷售網站 (Project A)
-- **文件版本:** 1.0.8
-- **最後更新:** 2025-11-15
+- **文件版本:** 1.0.10
+- **最後更新:** 2025-12-25
 - **基於專案:** N/A (此為初始專案)
 ---
 
@@ -20,8 +20,13 @@
 - **前端框架:** React 19, TypeScript
 - **樣式方案:** Tailwind CSS (via CDN)
 - **部署平台:** Netlify (CI/CD via GitHub)
+- **後端功能:** Netlify Functions (Node.js)
+    - 用於動態價格抓取，解決綠界 CSR 頁面無法直接爬取的問題。
 - **檔案結構:**
   - `/src/components`: 存放所有 React 元件。
+  - `/src/hooks`: 存放 Custom Hooks (如 `usePrice.ts`)。
+  - `/netlify/functions`: 存放 Serverless Functions (如 `get-price.js`)。
+  - `/scripts`: 存放開發與驗證用的工具腳本。
   - `App.tsx`: 組合所有頁面級元件 (Sections) 的主佈局檔案。
   - `index.html`: 應用程式進入點，包含全域設定、追蹤碼。
   - `/docs`: 存放所有技術與規格文件。
@@ -143,3 +148,6 @@
 
 ## 6. 部署與營運 (Deployment & Operations)
 - **部署流程:** Push to `main` branch on GitHub -> Triggers Netlify build & deploy.
+- **後端功能 (Netlify Functions):** 
+    - **動態價格抓取:** 使用 Serverless Function (`netlify/functions/get-price.js`) 模擬瀏覽器行為請求綠界 API，解析並回傳最低有效價格。
+    - **前端整合:** 透過 Hook `usePrice.ts` 抓取價格，並實作優雅降級（失敗時顯示預設文案）。

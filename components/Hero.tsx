@@ -1,4 +1,6 @@
+
 import React, { useState, useEffect } from 'react';
+import usePrice from '../hooks/usePrice';
 
 const GoogleIcon: React.FC = () => (
     <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -18,6 +20,7 @@ const miniTestimonials = [
 
 const Hero: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const price = usePrice();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -53,7 +56,7 @@ const Hero: React.FC = () => {
             <a href="https://page.cashier.ecpay.com.tw/forms/cPy2" 
                data-gtm-id="cta-hero"
                className="inline-block bg-orange-600 text-white text-xl font-bold px-12 py-5 rounded-xl shadow-lg hover:bg-orange-700 transform hover:scale-105 transition-all duration-300 hover:shadow-orange-500/50">
-               立即開始！惱人的會議記錄交給 Google
+               {price ? `${price}元 一口價！立刻將會議記錄交給 Google AI` : "立即開始！會議記錄交給 Google AI"}
             </a>
             
             {/* 改進後的淡入淡出見證 */}
