@@ -1,3 +1,4 @@
+
 # Agent Factory 技術文件撰寫指南 (SOP)
 
 ---
@@ -17,14 +18,16 @@
 所有技術文件都應存放在專案的根目錄下一個名為 `docs` 的資料夾中。
 
 ```
-/
+/ (Project Root)
 ├── docs/
 │   ├── SPECIFICATION.md      // 核心技術與規格文件
 │   ├── WRITING_GUIDE.md      // (本文件) 技術文件撰寫指南
 │   ├── CHANGELOG.md          // 版本變更日誌
 │   └── assets/               // 存放文件中引用的圖片、圖表
-├── public/
-├── src/
+├── components/               // React 元件 (扁平結構，無 src)
+├── hooks/                    // Custom Hooks
+├── public/                   // 靜態資源
+├── App.tsx                   // 主程式
 └── ...
 ```
 
@@ -57,7 +60,7 @@
 - **前端框架:** ...
 - **樣式方案:** ...
 - **部署平台:** ...
-- **檔案結構:** ...
+- **檔案結構:** (請務必維持扁平結構，勿新增 src 資料夾)
 
 ## 3. 設計系統 (Design System) - "Design Tokens"
 ### 3.1 色彩 (Colors)

@@ -1,13 +1,17 @@
+
 # 版本變更日誌
 
 所有此專案的重要變更都將記錄在此檔案中。
 
 ## [1.0.24] - 2025-12-25
 
+### Fixed (Critical)
+- **Project Structure Correction:** 修正了專案檔案結構錯誤。移除了不必要的 `src/` 層級，確認專案採用 **扁平式結構 (Flat Structure)**，所有元件與 Hook 直接位於根目錄下的 `components/` 與 `hooks/`。
+
 ### Added
 - **Dynamic Pricing Feature:** 實作綠界 (ECPay) 動態價格抓取功能。
     - **Backend:** 新增 `netlify/functions/get-price.js`，將本地驗證過的爬蟲邏輯封裝為 Serverless API。
-    - **Frontend Logic:** 新增 `src/hooks/usePrice.ts`，負責與後端 API 溝通並處理狀態。
+    - **Frontend Logic:** 新增 `hooks/usePrice.ts`，負責與後端 API 溝通並處理狀態。
     - **UI Updates:** 更新 `Hero.tsx` 與 `FinalCTA.tsx`，當 API 成功回傳價格時，按鈕文案會自動更新為「450元 一口價！...」。
     - **Localization:** 價格顯示採台灣慣用格式 (例如: "450元")。
 

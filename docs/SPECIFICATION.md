@@ -1,8 +1,9 @@
+
 # Agent Factory 專案技術規格書
 
 ---
 - **專案名稱:** AI 會議助理一頁式銷售網站 (Project A)
-- **文件版本:** 1.0.10
+- **文件版本:** 1.0.24
 - **最後更新:** 2025-12-25
 - **基於專案:** N/A (此為初始專案)
 ---
@@ -22,11 +23,12 @@
 - **部署平台:** Netlify (CI/CD via GitHub)
 - **後端功能:** Netlify Functions (Node.js)
     - 用於動態價格抓取，解決綠界 CSR 頁面無法直接爬取的問題。
-- **檔案結構:**
-  - `/src/components`: 存放所有 React 元件。
-  - `/src/hooks`: 存放 Custom Hooks (如 `usePrice.ts`)。
-  - `/netlify/functions`: 存放 Serverless Functions (如 `get-price.js`)。
-  - `/scripts`: 存放開發與驗證用的工具腳本。
+- **檔案結構 (扁平式 Flat Structure):**
+  > **注意：** 本專案採扁平結構，**不使用** `src` 資料夾。所有程式碼直接位於根目錄下。
+  - `./components`: 存放所有 React 元件 (如 `Hero.tsx`)。
+  - `./hooks`: 存放 Custom Hooks (如 `usePrice.ts`)。
+  - `./netlify/functions`: 存放 Serverless Functions (如 `get-price.js`)。
+  - `./scripts`: 存放開發與驗證用的工具腳本。
   - `App.tsx`: 組合所有頁面級元件 (Sections) 的主佈局檔案。
   - `index.html`: 應用程式進入點，包含全域設定、追蹤碼。
   - `/docs`: 存放所有技術與規格文件。
@@ -79,6 +81,12 @@
 
 ## 4. 元件庫 (Component Library)
 
+### 4.0 Utilities & Hooks (2025-12-25新增)
+- **`usePrice` Hook:**
+    - **用途:** 負責向後端 API (`/.netlify/functions/get-price`) 請求當前商品價格。
+    - **行為:** 異步抓取，失敗時回傳 `null` 以觸發 UI 優雅降級。
+    - **位置:** `./hooks/usePrice.ts`
+
 ### 4.1 Header
 - **用途:** 網站頂部導覽列，包含 Logo、產品名稱和 CTA 按鈕。
 - **行為:**
@@ -101,6 +109,10 @@
 #### 4.1.2 實作規範 (Implementation Mandate)
 - **結構與行為固定:** Header 的 JSX 結構、自動隱藏的邏輯 **必須** 保持固定。
 - **可變動項目:** 允許修改 Logo (`<Logo />` 元件)、產品名稱文字、CTA 連結，以及磨砂玻璃效果的**顏色與強度**，以適應不同專案的品牌風格。
+
+### 4.2 Hero
+- **更新:** CTA 按鈕已整合 `usePrice` Hook，顯示動態價格。
+- **行為:** 若 Hook 回傳價格，顯示「XXX元 一口價...」；若無回傳，顯示預設「立即開始...」。
 
 ### 4.2 Problem
 - **用途:** 呈現使用者痛點，並透過成本分析卡片凸顯競品 (Plaud Note) 的長期持有成本。
@@ -131,6 +143,9 @@
 #### 4.6.1 實作規範 (Implementation Mandate)
 `Assurance` 元件的三大保證內容與聯繫方式 **必須** 保持固定。
 
+### 4.7 FinalCTA
+- **更新:** 與 Hero 區塊相同，已整合 `usePrice` Hook 顯示動態價格。
+
 ## 5. 靜態資源管理 (Asset Management)
 
 ### 5.1 圖示 (Icons)
@@ -150,4 +165,4 @@
 - **部署流程:** Push to `main` branch on GitHub -> Triggers Netlify build & deploy.
 - **後端功能 (Netlify Functions):** 
     - **動態價格抓取:** 使用 Serverless Function (`netlify/functions/get-price.js`) 模擬瀏覽器行為請求綠界 API，解析並回傳最低有效價格。
-    - **前端整合:** 透過 Hook `usePrice.ts` 抓取價格，並實作優雅降級（失敗時顯示預設文案）。
+    - **前端整合:** 透過 Hook `hooks/usePrice.ts` 抓取價格，並實作優雅降級（失敗時顯示預設文案）。
