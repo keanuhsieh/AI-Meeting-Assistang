@@ -26,7 +26,7 @@ const FinalCTA: React.FC = () => {
                     立即開始，體驗 3 分鐘完成會議記錄。您只需要一個 Google 帳號。
                 </p>
                 <div className="mt-10">
-                    <a href="https://page.cashier.ecpay.com.tw/forms/cPy2" 
+                    <a href="https://a.ecpay.tw/dfU0" 
                        data-gtm-id="cta-final"
                        className="inline-block bg-orange-600 text-white text-xl font-bold px-12 py-5 rounded-xl shadow-lg hover:bg-orange-700 transform hover:scale-105 transition-all duration-300 hover:shadow-orange-500/50">
                        {price ? `${price}元 一口價買斷免訂閱！立即開始，提高會議品質，一個人一年省下 120 天！` : "買斷免訂閱！立即開始，提高會議品質，一個人一年現賺 120 天！"}

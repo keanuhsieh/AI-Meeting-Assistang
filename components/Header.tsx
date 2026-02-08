@@ -48,7 +48,7 @@ const Header: React.FC = () => {
                     <Logo className="w-8 h-8 text-orange-600" />
                     <span className="text-xl font-bold text-slate-900">Gemini 會議記錄 APP</span>
                 </div>
-                <a href="https://page.cashier.ecpay.com.tw/forms/cPy2" 
+                <a href="https://a.ecpay.tw/dfU0" 
                    data-gtm-id="cta-header"
                    className="hidden sm:inline-block bg-orange-600 text-white font-semibold px-5 py-2 rounded-lg hover:bg-orange-700 transition-all duration-300">
                     立即開始

@@ -3,6 +3,14 @@
 
 所有此專案的重要變更都將記錄在此檔案中。
 
+## [1.0.25] - 2026-02-09
+
+### Changed
+- **Payment Link Update:** 更新綠界 (ECPay) 結帳表單連結。
+    - **Frontend:** `Header`, `Hero`, `FinalCTA` 的購買連結皆更新為短網址 `https://a.ecpay.tw/dfU0`。
+    - **Backend Logic:** 因應新版表單 (`form.cashier`) 為 SPA 架構，重寫 `netlify/functions/get-price.js` 邏輯，改為嘗試呼叫 `/api/orders/{ID}`。
+    - **Developer Tools:** 同步更新 `scripts/verify-price.mjs` 以驗證新版 API。
+
 ## [1.0.24] - 2025-12-25
 
 ### Fixed (Critical)

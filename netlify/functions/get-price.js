@@ -1,14 +1,16 @@
 
 exports.handler = async function(event, context) {
-  const FORM_ID = 'cPy2';
-  const API_URL = `https://page.cashier.ecpay.com.tw/private/api/forms/${FORM_ID}`;
+  const FORM_ID = 'dfU0';
+  // 更新為新版 API 路徑，這是 SPA 前端用來獲取資料的接口
+  const API_URL = `https://form.cashier.ecpay.com.tw/api/orders/${FORM_ID}`;
 
   try {
     const response = await fetch(API_URL, {
       method: 'GET',
       headers: {
-        // 1. 來源偽裝
-        'Referer': `https://page.cashier.ecpay.com.tw/forms/${FORM_ID}`,
+        // 1. 來源偽裝 (必須對應新版網域)
+        'Referer': `https://form.cashier.ecpay.com.tw/${FORM_ID}`,
+        'Origin': 'https://form.cashier.ecpay.com.tw',
         // 2. 瀏覽器身份
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         // 3. 接收格式
@@ -30,41 +32,52 @@ exports.handler = async function(event, context) {
 
     const json = await response.json();
 
-    // 驗證資料結構
-    if (!json.response || !json.response.elements) {
-        return { statusCode: 500, body: JSON.stringify({ error: 'Invalid API Response Format' }) };
+    // --- 新版 API (form.cashier) 的資料結構解析 ---
+    // 預期結構: json.data.goods[0].specifications[0].price
+    
+    if (!json.data || !json.data.goods) {
+        return { statusCode: 500, body: JSON.stringify({ error: 'Invalid New API Response Format' }) };
     }
 
-    // 1. 找到商品區塊 (uf_product)
-    const productElement = json.response.elements.find(el => el.elem_type === 'uf_product');
-    
-    if (!productElement) {
+    // 1. 取得商品列表
+    const goods = json.data.goods;
+    if (!goods || goods.length === 0) {
         return { statusCode: 404, body: JSON.stringify({ error: 'Product Not Found' }) };
     }
 
-    // 2. 取得商品選項
-    const productOption = productElement.elem_data.options[0];
-    if (!productOption || !productOption.assorts) {
-        return { statusCode: 500, body: JSON.stringify({ error: 'No Product Options Found' }) };
-    }
+    const validPrices = [];
 
-    // 3. 過濾有庫存且價格有效的項目
-    const validPrices = productOption.assorts
-        .filter(item => item.amount > 0 && Number(item.sale_price) > 0)
-        .map(item => Number(item.sale_price));
+    // 2. 遍歷商品
+    goods.forEach(good => {
+        if (good.specifications) {
+            good.specifications.forEach(spec => {
+                // 檢查是否有庫存 (有些欄位可能是 stock, amount 或 limit)
+                // 這裡假設 buy_limit_count 或 stock, 若無欄位則假設有貨
+                const price = Number(spec.price);
+                if (price > 0) {
+                     validPrices.push(price);
+                }
+            });
+        } else {
+             // 無規格商品
+             const price = Number(good.price);
+             if (price > 0) validPrices.push(price);
+        }
+    });
+
 
     if (validPrices.length === 0) {
-        return { statusCode: 404, body: JSON.stringify({ error: 'Out of Stock' }) };
+        return { statusCode: 404, body: JSON.stringify({ error: 'No Valid Prices Found' }) };
     }
 
-    // 4. 取得最低價
+    // 3. 取得最低價
     const minPrice = Math.min(...validPrices);
 
     return {
       statusCode: 200,
       headers: {
           'Content-Type': 'application/json',
-          'Cache-Control': 'public, max-age=300' // 快取 5 分鐘，避免過度頻繁請求
+          'Cache-Control': 'public, max-age=300' // 快取 5 分鐘
       },
       body: JSON.stringify({ price: minPrice }),
     };
