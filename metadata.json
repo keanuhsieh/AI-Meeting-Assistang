@@ -1,5 +1,6 @@
 {
   "name": "AI Meeting Assistant Landing Page",
-  "description": "A landing page for an AI-powered meeting assistant that securely transcribes and summarizes audio recordings into Google Docs using Google Gemini.",
-  "requestFramePermissions": []
+  "description": "A landing page for Gemini 會議記錄 APP introducing its next-generation product Osmi for AI meeting transcription and summaries.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
 }

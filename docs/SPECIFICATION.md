@@ -1,168 +1,103 @@
-
 # Agent Factory 專案技術規格書
 
 ---
-- **專案名稱:** AI 會議助理一頁式銷售網站 (Project A)
-- **文件版本:** 1.0.24
-- **最後更新:** 2025-12-25
-- **基於專案:** N/A (此為初始專案)
+- **專案名稱:** Gemini 會議記錄 APP 升級承接頁 (Osmi Migration Landing Page)
+- **文件版本:** 2.0.0
+- **最後更新:** 2026-10-10
+- **基於專案:** AI 會議助理一頁式銷售網站 (Project A, v1.0.25)
 ---
 
 > **[文件維護指南]** 關於如何撰寫、維護此文件，或基於此文件建立新專案，請參閱 [技術文件撰寫指南 (WRITING_GUIDE.md)](./WRITING_GUIDE.md)。
 
 ## 1. 專案總覽 (Project Overview)
 
-- **目標使用者:** 公務員、法律專業人士、研究生、企業 PM 等需要處理大量會議記錄的專業人士。
-- **核心價值主張:** 安全、高效地將機密會議錄音轉化為 Google 文件摘要，節省時間，保護資料隱私。
-- **產品正式名稱:** Gemini 會議記錄 APP
+- **專案定位:** 原「Gemini 會議記錄 APP」一頁式銷售頁全面轉型為「舊產品升級為 Osmi」的品牌承接與導流網站。
+- **核心目標:**
+  1. 保留舊站既有的自然搜尋價值（Gemini 會議記錄、會議記錄 APP、AI 錄音轉文字、AI 逐字稿、Plaud AI 替代方案、會議紀錄軟體）。
+  2. 清楚且自然地告知訪客：「Gemini 會議記錄 APP」的新一代產品現在叫 Osmi。
+  3. 建立連續性與信任感，引導訪客前往 `https://osmi.bookai.com/zh-TW/`。
+  4. 嚴格不自動轉址，所有前往 Osmi 的動作均由使用者主動點擊。
+- **真實產品定位:**
+  - Osmi 是「Gemini 會議記錄 APP」的新一代產品。
+  - 使用者把已經錄好的錄音、影片或錄音筆檔案交給 Osmi（不宣稱由 Osmi 直接替使用者錄音）。
+  - Osmi 會先詢問講者、人名、術語與紀錄語言，再撰寫會議紀錄。
+  - 產出包含重點、時序摘要、行動事項與完整逐字稿。
+  - 支援 iPhone、Android 與電腦網頁，同一個帳號跨平台使用。
+  - 支援 21 種介面與紀錄語言；支援手機錄音、影片與 10 種以上舊錄音筆格式。
+  - 電腦網頁單場最長可處理 12 小時。
+  - 沒有訂閱、自動續費或月租；依需要購買分鐘，已購買分鐘不過期；拿到逐字稿才扣分鐘。
+  - 新帳號送 60 分鐘，不綁信用卡。
+  - 營運與資安事實：台灣公司營運、錄音暫存在 Google Cloud 台灣區處理完成後刪除、帳號資料使用 Supabase 東京區、使用 Google 官方 Gemini API（依 Google 適用條款，提交內容不被用來訓練 Google 產品）。
 
-## 2. 技術棧與架構 (Tech Stack & Architecture)
+## 2. 全站禁止內容 (Prohibited Content Policy)
+
+全站嚴格移除或禁止以下字句：
+- 「資料 100% 只存在使用者自己的 Google Drive」
+- 「我們完全不經手資料」、「沒有經過任何第三方」
+- 「絕對安全」、「零資安風險」、「完全杜絕外洩」
+- 「符合政府資安指引」（除非有正式證明）
+- 「一次買斷、無限使用」、「終身更新」
+- 「3 分鐘完成」或任何固定完成時間保證
+- 「一年省下 120 天」等無依據誇大計算
+- 虛構之「4.9 分、68 則評論」及林經理、王律師等人物見證
+- AggregateRating 與 Review 結構化資料
+- 舊價格、舊購買按鈕及舊 ECPay (綠界) 結帳入口
+- 「中資硬體」「無中資」等攻擊或暗示競品國籍之說法
+- 將 Plaud 描述成高風險或不安全
+- 舊 SSL badge、SSL security seal 與相關誇大文案
+- Unsplash 或其他一般會議圖庫主視覺；任何 AI 生成產品畫面
+
+## 3. 技術棧與架構 (Tech Stack & Architecture)
 
 - **前端框架:** React 19, TypeScript
-- **樣式方案:** Tailwind CSS (via CDN)
-- **部署平台:** Netlify (CI/CD via GitHub)
-- **後端功能:** Netlify Functions (Node.js)
-    - 用於動態價格抓取，解決綠界 CSR 頁面無法直接爬取的問題。
-- **檔案結構 (扁平式 Flat Structure):**
-  > **注意：** 本專案採扁平結構，**不使用** `src` 資料夾。所有程式碼直接位於根目錄下。
-  - `./components`: 存放所有 React 元件 (如 `Hero.tsx`)。
-  - `./hooks`: 存放 Custom Hooks (如 `usePrice.ts`)。
-  - `./netlify/functions`: 存放 Serverless Functions (如 `get-price.js`)。
-  - `./scripts`: 存放開發與驗證用的工具腳本。
-  - `App.tsx`: 組合所有頁面級元件 (Sections) 的主佈局檔案。
-  - `index.html`: 應用程式進入點，包含全域設定、追蹤碼。
-  - `/docs`: 存放所有技術與規格文件。
+- **樣式方案:** Tailwind CSS (支援 WCAG AA、prefers-reduced-motion、響應式)
+- **檔案架構 (扁平式 Flat Structure):**
+  - `./components`: 存放各區段 React 元件 (`Announcement.tsx`, `Header.tsx`, `Hero.tsx`, `BrandContinuity.tsx`, `ProcessSteps.tsx`, `DesktopShowcase.tsx`, `CoreFeatures.tsx`, `DataTrust.tsx`, `Pricing.tsx`, `FAQ.tsx`, `FinalCTA.tsx`, `Footer.tsx`)
+  - `./utils`: 追蹤公用函式 (`analytics.ts`)
+  - `App.tsx`: 頁面主佈局
+  - `index.html`: 入口與 SEO / JSON-LD / GTM 設定
+  - `/public/pix`: 官方真實截圖與素材（以 `/pix/檔名` 引用）
+  - `/public/wordmark.svg`: 橫式官方標準字
 
-### 2.1 命名規範 (Naming Conventions)
-- **元件命名:** 所有元件檔案和匯出的 React 元件 **必須** 使用 `PascalCase` (例如: `FeatureCard.tsx`, `FinalCTA.tsx`)。
-- **語意化:** 元件名稱應具備語意，清晰描述其功能或內容 (例如: `Problem`, `Solution`, `Trust`)。
+### 3.1 設計系統 (Design Tokens)
 
-## 3. 設計系統 (Design System) - "Design Tokens"
-
-### 3.1 色彩 (Colors)
-| 用途 | Token Name | Tailwind Class(es) | 備註 |
+| 用途 | Token Name | Class / 數值 | 備註 |
 |---|---|---|---|
-| 主色 (CTA) | `primary` | `orange-600` | 用於按鈕、重點強調 |
-| 主色 (Hover) | `primary-hover` | `orange-700` | 按鈕懸停效果 |
-| 主色 (亮) | `primary-light` | `orange-100` | Icon 背景 |
-| 主色 (點綴) | `primary-accent`| `orange-400` | Hero 標題亮點 |
-| 點綴 (競品分析) | `accent-competitor` | `amber-400` | Problem Section 卡片 |
-| 文字 (標題) | `text-heading`| `slate-900` | 主要標題 |
-| 文字 (內文) | `text-body` | `slate-800`, `slate-700` | 主要內文 |
-| 文字 (輔助) | `text-muted` | `slate-600`, `slate-500` | 次要說明文字 |
-| 文字 (反色) | `text-inverted`| `white`, `slate-200`, `slate-300`| 用於深色背景 |
-| 背景 (預設) | `bg-default` | `slate-50` | 頁面主要背景 |
-| 背景 (次級) | `bg-subtle` | `slate-100` | 區塊間隔背景 |
-| 背景 (表面) | `bg-surface` | `white` | 卡片、浮動元素 |
-| 背景 (深色) | `bg-dark` | `slate-800` | Problem Section 卡片 |
-| 邊框 | `border-default`| `slate-200` | 卡片、表格邊框 |
-| 狀態 (危險) | `status-danger`| `red-500` `red-600` `red-700`| Problem Section |
-| 狀態 (成功) | `status-success`| `green-600` | Assurance Section |
-| 點綴 (高亮) | `accent-highlight`|`yellow-300` | Hero 內文高亮 |
+| 品牌蔚藍 (Brand Azure) | `brand-azure` | `#81BDD6` | Osmi 品牌標記專用色 |
+| 主要互動 (Primary CTA) | `cta-primary` | `#165A79` / `hover:#114862` | 高對比深藍，對比度 > 4.5:1 (符合 WCAG AA) |
+| 次要互動 (Secondary CTA) | `cta-secondary` | `#F1F5F9` / 邊框 `#CBD5E1` | 淺灰藍按鈕 |
+| 頁面背景 | `bg-default` | `#F8FAFC` 至 `#FFFFFF` | 淺藍灰/白背景，大量留白 |
+| 容器背景 | `bg-card` | `#FFFFFF` | 白色卡片，輕微邊框與微陰影 |
+| 主要文字 | `text-heading` | `#0F172A` (Slate 900) | 深色標題文字，嚴禁大面積彩度漸層 |
+| 內文文字 | `text-body` | `#334155` (Slate 700) | 主要段落 |
+| 輔助文字 | `text-muted` | `#64748B` (Slate 500) | 輔助說明小字 |
+| 邊框線條 | `border-default` | `#E2E8F0` (Slate 200) | 區塊與事實表格線 |
 
+## 4. 頁面區塊順序 (Page Section Order)
 
-### 3.2 字體排版 (Typography)
-| 用途 | Tailwind Class(es) | 字重 | 備註 |
-|---|---|---|---|
-| Display | `text-4xl md:text-6xl` | `font-extrabold` | Hero Section H1 |
-| Heading 2 | `text-3xl md:text-4xl` | `font-bold` | 各 Section H2 |
-| Heading 3 | `text-2xl` | `font-bold` | 卡片、區塊內標題 |
-| Body Large | `text-lg md:text-xl` | `font-normal` | 主要段落文字 |
-| Body Normal | `text-base` | `font-normal` | 次要段落文字 |
+1. **品牌升級公告列 (Announcement):** 置頂橫條，文字「Gemini 會議記錄 APP 已升級為 Osmi」，不可關閉、不自動跳轉，帶有導流連結。
+2. **頁首導覽 (Header):** 左側 Osmi wordmark，右側「新一代 Osmi」、「看 30 秒範例」、「免費試用」按鈕。Sticky 定位且不遮擋內文。
+3. **Hero (首屏核心):** 單一 H1「會議記錄 APP，現在叫 Osmi。」，副標說明「AI 先問再寫」，雙 CTA 按鈕，右側完整呈現 `/pix/04-ask-speakers.png`。
+4. **品牌延續說明 (BrandContinuity):**「不是換一個名字而已。」說明四項改進，搭配 `/pix/01-list.png`。
+5. **三步驟流程 (ProcessSteps):**「交出錄音」(`/pix/16-share-in.png`) ➔「回答幾個問題」(`/pix/04-ask-speakers.png`) ➔「拿走整理好的紀錄」(`/pix/07-doc-top.png`)。
+6. **電腦版工作畫面 (DesktopShowcase):** 主圖 `/pix/D1-overview.png`、`/pix/D2-notes-transcript.png`，輔助圖 `/pix/D5-export.png`、`/pix/D7-multifile.png`。
+7. **核心能力 (CoreFeatures):** 8 項真實產品能力。
+8. **資料與信任 (DataTrust):** 5 項事實表格與「查看完整資料地圖 →」連結。
+9. **價格方案 (Pricing):** 60、180、600 分鐘非訂閱買點數方案與試用說明。
+10. **常見問題 (FAQ):** 6 組依規格撰寫之問答，鍵盤存取支援。
+11. **最後行動 (FinalCTA):**「下一場會議，你只要把關。」雙 CTA 導流。
+12. **頁腳資訊 (Footer):** 品牌承接宣示、各項官方服務與條款連結。
 
-### 3.3 間距 (Spacing) & 佈局 (Layout)
-- **容器寬度:** `.container.mx-auto.px-6`
-- **Section 垂直間距:** `py-20 md:py-28`
-- **網格間距:** `gap-8`, `gap-12`
+## 5. 分析與追蹤規範 (Analytics)
 
-### 3.4 視覺效果 (Effects)
-- **圓角:** `rounded-lg`, `rounded-xl`, `rounded-full`
-- **陰影:** `shadow-sm`, `shadow-md`, `shadow-lg`, `shadow-xl`, `shadow-2xl`
-
-## 4. 元件庫 (Component Library)
-
-### 4.0 Utilities & Hooks (2025-12-25新增)
-- **`usePrice` Hook:**
-    - **用途:** 負責向後端 API (`/.netlify/functions/get-price`) 請求當前商品價格。
-    - **行為:** 異步抓取，失敗時回傳 `null` 以觸發 UI 優雅降級。
-    - **位置:** `./hooks/usePrice.ts`
-
-### 4.1 Header
-- **用途:** 網站頂部導覽列，包含 Logo、產品名稱和 CTA 按鈕。
-- **行為:**
-  - **自動隱藏:** 使用者向下滾動時自動向上滑動隱藏，向上滾動時滑動出現。
-  - **固定定位:** 使用 `fixed` 定位，確保在螢幕頂部。
-
-#### 4.1.1 視覺風格：磨砂玻璃 (Visual Style: Frosted Glass)
-- **用途:** 創造一個精緻、現代且具備厚實感的導覽列。
-- **實作細節:** 透過組合以下 Tailwind CSS class 實現。
-  - **背景與透明度:** `bg-white/{opacity}` (建議值: 50-75)
-  - **背景模糊:** `backdrop-blur-{level}` (建議值: xl or 2xl)
-  - **陰影:** `shadow-{level}` (建議值: lg or xl)
-  - **邊緣光澤:** 使用 `after:` 偽元素與 `bg-gradient-to-r` 創造模擬反光的細線。
-- **調整指南:**
-  - **透明度:** 修改 `bg-white/50` 中的 `50`。數值越低，越透明，模糊效果越明顯。
-  - **模糊度:** 修改 `backdrop-blur-2xl` 中的 `2xl`。可選 `xl`, `lg`, `md`。
-  - **陰影:** 修改 `shadow-2xl`。可選 `xl`, `lg`, `md`。
-  - **光澤:** 修改 `after:via-orange-200/85` 中的顏色 (`orange-200`) 與亮度 (`85`)。
-
-#### 4.1.2 實作規範 (Implementation Mandate)
-- **結構與行為固定:** Header 的 JSX 結構、自動隱藏的邏輯 **必須** 保持固定。
-- **可變動項目:** 允許修改 Logo (`<Logo />` 元件)、產品名稱文字、CTA 連結，以及磨砂玻璃效果的**顏色與強度**，以適應不同專案的品牌風格。
-
-### 4.2 Hero
-- **更新:** CTA 按鈕已整合 `usePrice` Hook，顯示動態價格。
-- **行為:** 若 Hook 回傳價格，顯示「XXX元 一口價...」；若無回傳，顯示預設「立即開始...」。
-
-### 4.2 Problem
-- **用途:** 呈現使用者痛點，並透過成本分析卡片凸顯競品 (Plaud Note) 的長期持有成本。
-- **結構:**
-    - 頂部為三欄式成本累加卡片。
-    - 底部為三欄式情境說明卡片，其中右側卡片為深色背景，用於成本分析。
-
-### 4.3 Testimonials (靜態網格)
-- **用途:** 展示客戶見證，建立社會認同。
-- **行為:** 使用 **3x3 靜態網格** (Desktop) 或垂直堆疊 (Mobile) 以增加閱讀深度。
-- **規範:** 頂部必須包含「信任標籤 (Trust Badge)」，顯示評分（例如：4.9/5 顆星）與評價總數。
-
-### 4.4 Trust (比較表)
-- **用途:** 透過表格比較我方與他牌服務的優劣，並展示金流安全認證。
-
-#### 4.4.1 實作規範 (Implementation Mandate)
-為確保品牌信任感與金流安全性的一致性，`Trust` 元件的結構 **必須** 在所有衍生專案中保持固定。
-
-### 4.5 About
-- **用途:** 介紹 Agent Factory 的品牌故事、理念與核心價值。
-
-#### 4.5.1 實作規範 (Implementation Mandate)
-`About` 元件的版面配置、文案與圖片 **必須** 在所有專案中保持一致。
-
-### 4.6 Assurance
-- **用途:** 提供專業保證與大量採購方案，建立企業客戶的信任感。
-
-#### 4.6.1 實作規範 (Implementation Mandate)
-`Assurance` 元件的三大保證內容與聯繫方式 **必須** 保持固定。
-
-### 4.7 FinalCTA
-- **更新:** 與 Hero 區塊相同，已整合 `usePrice` Hook 顯示動態價格。
-
-## 5. 靜態資源管理 (Asset Management)
-
-### 5.1 圖示 (Icons)
-- **慣例:** SVG 圖示以 React 元件形式直接撰寫在 `.tsx` 檔案中。
-
-### 5.2 圖片 (Images)
-- **慣例:** 統一託管於 Wix 平台的媒體庫中。
-
-### 5.3 品牌 Logo (Brand Logo)
-- **要求:** 強制使用 `<Logo />` 元件。
-
-### 5.4 網站圖示 (Favicon)
-- **要求:** 必須以實體檔案（`.svg` 或 `.png`）的形式存在於 `public/` 目錄下。
-- **SEO 規範:** 為了確保 Google 搜尋結果能正確顯示圖示，`index.html` 必須包含 `apple-touch-icon` (指向 SVG 或高品質 PNG) 以及 `mask-icon` (針對 Safari)。
-
-## 6. 部署與營運 (Deployment & Operations)
-- **部署流程:** Push to `main` branch on GitHub -> Triggers Netlify build & deploy.
-- **後端功能 (Netlify Functions):** 
-    - **動態價格抓取:** 使用 Serverless Function (`netlify/functions/get-price.js`) 模擬瀏覽器行為請求綠界 API，解析並回傳最低有效價格。
-    - **前端整合:** 透過 Hook `hooks/usePrice.ts` 抓取價格，並實作優雅降級（失敗時顯示預設文案）。
+- 保持既有 GTM 容器 (`GTM-TXQBC2JD`) 與 Meta Pixel (`PageView`)。
+- 所有連往 `osmi.bookai.com` 之連結，必須透過全域公用函式發送：
+  ```javascript
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'osmi_outbound_click',
+    destination: '完整網址',
+    placement: 'announcement' | 'nav' | 'hero' | 'flow' | 'data' | 'pricing' | 'final' | 'footer'
+  });
+  ```
+- 追蹤失敗絕不得阻擋使用者瀏覽或造成連結失效。

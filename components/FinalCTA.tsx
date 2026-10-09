@@ -1,48 +1,87 @@
-
 import React from 'react';
-import Logo from './Logo';
-import usePrice from '../hooks/usePrice';
+import { trackOsmiClick } from '../utils/tracking';
 
-const GoogleIcon: React.FC = () => (
-    <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
-        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-    </svg>
-);
+const PRICING_TRIAL_URL =
+  'https://osmi.bookai.com/app?hl=zh-TW&utm_source=hfcc_oldsite&utm_medium=referral&utm_campaign=osmi_migration&utm_content=pricing';
+const PRICING_MORE_URL =
+  'https://osmi.bookai.com/zh-TW/pricing/?utm_source=hfcc_oldsite&utm_medium=referral&utm_campaign=osmi_migration&utm_content=pricing_more';
+
+const pricePlans = [
+  { minutes: '60 分鐘', price: 'NT$39' },
+  { minutes: '180 分鐘', price: 'NT$99', popular: true },
+  { minutes: '600 分鐘', price: 'NT$300' },
+];
 
 const FinalCTA: React.FC = () => {
-    const price = usePrice();
+  const handleTrialClick = () => {
+    trackOsmiClick(PRICING_TRIAL_URL, 'pricing');
+  };
 
-    return (
-        <section className="py-20 md:py-32 bg-slate-100">
-            <div className="container mx-auto px-6 text-center">
-                <div className="flex justify-center items-center space-x-3">
-                    <Logo variant="outline" className="w-10 h-10 text-orange-600" />
-                    <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900">雜事交給 Gemini 會議記錄 APP <br />寶貴的時間留給自己。</h2>
-                </div>
-                <p className="mt-4 text-lg md:text-xl text-slate-600 max-w-2xl mx-auto">
-                    立即開始，體驗 3 分鐘完成會議記錄。您只需要一個 Google 帳號。
-                </p>
-                <div className="mt-10">
-                    <a href="https://a.ecpay.tw/dfU0" 
-                       data-gtm-id="cta-final"
-                       className="inline-block bg-orange-600 text-white text-xl font-bold px-12 py-5 rounded-xl shadow-lg hover:bg-orange-700 transform hover:scale-105 transition-all duration-300 hover:shadow-orange-500/50">
-                       {price ? `${price}元 一口價買斷免訂閱！立即開始，提高會議品質，一個人一年省下 120 天！` : "買斷免訂閱！立即開始，提高會議品質，一個人一年現賺 120 天！"}
-                    </a>
-                    
-                    <p className="mt-6 text-slate-700 font-medium italic">
-                        「算完 Plaud 的年費後，我立刻決定買這個。」— 蔡顧問
-                    </p>
-                    
-                    <p className="mt-6 text-sm text-slate-500 flex items-center justify-center">
-                        <GoogleIcon /> 使用你的 Google 帳號安全使用
-                    </p>
-                </div>
-            </div>
-        </section>
-    );
+  const handleMoreClick = () => {
+    trackOsmiClick(PRICING_MORE_URL, 'pricing');
+  };
+
+  return (
+    <section
+      id="pricing"
+      aria-label="Osmi 方案與試用"
+      className="py-20 md:py-28 bg-slate-100 border-t border-slate-200"
+    >
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            想繼續用 AI 整理會議？看看新一代 Osmi。
+          </h2>
+          <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
+            新帳號送 60 分鐘，不綁卡。Osmi 沒有訂閱或自動續費，需要多少再買多少。
+          </p>
+
+          {/* Pricing cards */}
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-xl mx-auto">
+            {pricePlans.map((plan, idx) => (
+              <div
+                key={idx}
+                className={`p-5 rounded-xl border bg-white shadow-sm flex flex-col justify-center items-center ${
+                  plan.popular
+                    ? 'border-[#81BDD6] ring-2 ring-[#81BDD6]/40'
+                    : 'border-slate-200'
+                }`}
+              >
+                <span className="text-sm font-medium text-slate-500">
+                  {plan.minutes}
+                </span>
+                <span className="mt-1 text-2xl font-extrabold text-slate-900">
+                  {plan.price}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-4 text-sm font-semibold text-slate-600">
+            已購買的分鐘不過期。
+          </p>
+
+          {/* Action CTAs */}
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href={PRICING_TRIAL_URL}
+              onClick={handleTrialClick}
+              className="w-full sm:w-auto inline-flex items-center justify-center bg-[#134e6f] hover:bg-[#0c3952] text-white text-lg font-bold px-10 py-4 rounded-xl shadow-lg transition-colors focus:outline-none focus:ring-2 focus:ring-[#81BDD6] focus:ring-offset-2"
+            >
+              免費試用 Osmi
+            </a>
+            <a
+              href={PRICING_MORE_URL}
+              onClick={handleMoreClick}
+              className="text-sm font-bold text-[#134e6f] hover:underline px-4 py-2"
+            >
+              查看完整價格 →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default FinalCTA;

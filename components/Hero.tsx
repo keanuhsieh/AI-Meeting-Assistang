@@ -1,82 +1,94 @@
+import React from 'react';
+import { trackOsmiClick } from '../utils/tracking';
+import { IPhoneFrame } from './DeviceFrames';
+import { useLightbox } from '../context/LightboxContext';
 
-import React, { useState, useEffect } from 'react';
-import usePrice from '../hooks/usePrice';
-
-const GoogleIcon: React.FC = () => (
-    <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
-        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-    </svg>
-);
-
-const miniTestimonials = [
-    { name: "林經理", rating: 5.0, text: "這是我用過最超值的 AI 工具。" },
-    { name: "王律師", rating: 5.0, text: "錄音在自己的 Google 雲端才放心。" },
-    { name: "張股長", rating: 4.8, text: "比買 Plaud 硬體省下萬元的預算。" },
-    { name: "蔡顧問", rating: 4.9, text: "算完 Plaud 年費，立刻決定買這個。" },
-];
+const HERO_URL =
+  'https://osmi.bookai.com/zh-TW/?utm_source=hfcc_oldsite&utm_medium=referral&utm_campaign=osmi_migration&utm_content=hero';
+const HERO_TRIAL_URL =
+  'https://osmi.bookai.com/app?hl=zh-TW&utm_source=hfcc_oldsite&utm_medium=referral&utm_campaign=osmi_migration&utm_content=hero_trial';
 
 const Hero: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const price = usePrice();
+  const { openLightbox } = useLightbox();
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % miniTestimonials.length);
-    }, 3500);
-    return () => clearInterval(timer);
-  }, []);
+  const handlePrimaryClick = () => {
+    trackOsmiClick(HERO_URL, 'hero');
+  };
+
+  const handleTrialClick = () => {
+    trackOsmiClick(HERO_TRIAL_URL, 'hero');
+  };
+
+  const heroImageSrc = '/pix/04-ask-speakers.png';
+  const heroImageAlt = 'Osmi 在撰寫會議紀錄前確認講者與術語';
 
   return (
-    <section 
-      id="hero" 
-      className="relative py-20 md:py-32 bg-cover bg-center"
-      style={{ backgroundImage: "url('https://static.wixstatic.com/media/0f9583_8c57f64f5cb14700ab6c979602e9e674~mv2.avif')" }}
+    <section
+      id="hero"
+      aria-label="主要介紹"
+      className="relative py-16 md:py-24 bg-cover bg-center text-white"
+      style={{
+        backgroundImage:
+          "url('https://static.wixstatic.com/media/0f9583_8c57f64f5cb14700ab6c979602e9e674~mv2.avif')",
+      }}
     >
-      <div className="absolute inset-0 bg-slate-900/70 z-10"></div>
-      <div className="relative z-20 container mx-auto px-6 text-center">
-        <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight">
-          Gemini 會議記錄 APP <br /> 為你一年省下 120 天
-        </h1>
-        
-        <div className="mt-6 max-w-3xl mx-auto bg-slate-800/50 backdrop-blur-sm p-4 rounded-lg border border-orange-400/50">
-          <h2 className="text-2xl md:text-3xl font-bold text-orange-400">
-            別浪費 4 小時做會議記錄。 <br /> 3 分鐘產出會議摘要、待辦工作
-          </h2>
-          <p className="mt-4 text-lg text-slate-200">
-            公務員與專業人士，用 AI 把會議錄音 
-            <span className="font-bold bg-yellow-300 text-slate-900 px-2 py-1 rounded">安全低成本</span>
-              <br /> 轉為逐字稿、會議記錄，存在 Google 雲端硬碟。
-          </p>
-        </div>
+      {/* 原版照片乾淨深色遮罩 */}
+      <div className="absolute inset-0 bg-slate-900/70 z-10" />
 
-        <div id="cta" className="mt-12">
-            <a href="https://a.ecpay.tw/dfU0" 
-               data-gtm-id="cta-hero"
-               className="inline-block bg-orange-600 text-white text-xl font-bold px-12 py-5 rounded-xl shadow-lg hover:bg-orange-700 transform hover:scale-105 transition-all duration-300 hover:shadow-orange-500/50">
-               {price ? `${price}元 一口價買斷免訂閱！會議記錄交給 Google AI` : "買斷免訂閱！立刻將會議記錄交給 Google AI"}
-            </a>
-            
-            {/* 改進後的淡入淡出見證 */}
-            <div className="mt-6 relative h-6 flex items-center justify-center">
-                {miniTestimonials.map((item, idx) => (
-                    <div 
-                        key={idx} 
-                        className={`absolute flex items-center text-orange-300 font-medium transition-opacity duration-1000 ease-in-out ${idx === currentIndex ? 'opacity-100' : 'opacity-0'}`}
-                    >
-                        <span className="mr-2">{"⭐".repeat(Math.floor(item.rating))}</span>
-                        <span className="text-sm">{item.rating.toFixed(1)}</span>
-                        <span className="mx-2 text-slate-400">|</span>
-                        <span className="text-sm italic text-slate-100">{item.name}：{item.text}</span>
-                    </div>
-                ))}
+      <div className="relative z-20 container mx-auto px-4 sm:px-6">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center max-w-6xl mx-auto">
+          {/* Left Column: Text & Actions */}
+          <div className="lg:col-span-7 text-center lg:text-left">
+            {/* Eyebrow */}
+            <div className="text-sm font-bold tracking-wider text-orange-400 uppercase mb-4">
+              Gemini 會議記錄 APP 的下一代產品
             </div>
 
-            <p className="mt-8 text-sm text-slate-300 flex items-center justify-center">
-               <GoogleIcon /> 一切都掌握在 你的 Google 雲端
+            {/* Sole H1 on page */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
+              把錄音變成會議紀錄，
+              <br className="hidden sm:inline" />
+              現在有了新一代 Osmi。
+            </h1>
+
+            {/* Main copy */}
+            <p className="mt-6 text-base sm:text-lg text-slate-200 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              過去，我們用 Gemini 幫你把錄音整理成重點與待辦。現在，我們把這套流程做成完整產品 Osmi：AI 先確認講者、人名與術語，再撰寫可以直接交付的會議紀錄。
             </p>
+
+            {/* CTAs */}
+            <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4 justify-center lg:justify-start">
+              <a
+                href={HERO_URL}
+                onClick={handlePrimaryClick}
+                className="inline-flex items-center justify-center bg-[#134e6f] hover:bg-[#0c3952] text-white text-base font-bold px-7 py-3.5 rounded-xl shadow-lg border border-[#81BDD6]/40 transition-colors focus:outline-none focus:ring-2 focus:ring-[#81BDD6] focus:ring-offset-2 focus:ring-offset-slate-900"
+              >
+                認識新一代 Osmi
+              </a>
+              <a
+                href={HERO_TRIAL_URL}
+                onClick={handleTrialClick}
+                className="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 text-white text-base font-semibold px-6 py-3.5 rounded-xl border border-white/25 backdrop-blur-sm transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-900"
+              >
+                免費試用 Osmi（送 60 分鐘）
+              </a>
+            </div>
+
+            {/* Subtext under buttons */}
+            <p className="mt-4 text-xs sm:text-sm text-slate-300 tracking-wide">
+              沒有訂閱・不綁卡・手機、錄音筆、會議錄影都可以
+            </p>
+          </div>
+
+          {/* Right Column: Screenshot 套上 iPhone 樣式，可點擊滿版放大 */}
+          <div className="lg:col-span-5 flex justify-center">
+            <IPhoneFrame
+              src={heroImageSrc}
+              alt={heroImageAlt}
+              onClick={() => openLightbox(heroImageSrc, heroImageAlt)}
+              loading="eager"
+            />
+          </div>
         </div>
       </div>
     </section>

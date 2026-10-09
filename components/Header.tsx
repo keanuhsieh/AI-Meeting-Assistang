@@ -1,61 +1,54 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import Logo from './Logo';
+import AnnouncementBar from './AnnouncementBar';
+import { trackOsmiClick } from '../utils/tracking';
+
+const NAV_URL =
+  'https://osmi.bookai.com/zh-TW/?utm_source=hfcc_oldsite&utm_medium=referral&utm_campaign=osmi_migration&utm_content=nav';
 
 const Header: React.FC = () => {
-    const [isVisible, setIsVisible] = useState(true);
-    const lastScrollY = useRef(0);
+  const handleNavClick = () => {
+    trackOsmiClick(NAV_URL, 'nav');
+  };
 
-    const controlNavbar = () => {
-        const currentScrollY = window.scrollY;
+  return (
+    <header className="sticky top-0 w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200">
+      <AnnouncementBar />
+      <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-3.5 flex justify-between items-center">
+        {/* Left: Original product identity + relation marker (clean tag, no pill) */}
+        <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+          <div className="flex items-center space-x-2">
+            <Logo className="w-7 h-7 sm:w-8 sm:h-8 text-orange-600 flex-shrink-0" />
+            <span className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight">
+              Gemini 會議記錄 APP
+            </span>
+          </div>
 
-        // Add a small buffer to prevent flickering on some devices
-        if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
-            setIsVisible(false);
-        } else if (currentScrollY < lastScrollY.current) {
-            setIsVisible(true);
-        }
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-800 border border-slate-300">
+            <span>新一代：Osmi</span>
+            <img
+              src="/wordmark.svg"
+              alt="Osmi Logo"
+              className="h-3.5 w-auto"
+              width="48"
+              height="14"
+            />
+          </div>
+        </div>
 
-        // Always show if at the very top
-        if (currentScrollY <= 10) {
-            setIsVisible(true);
-        }
-
-        lastScrollY.current = currentScrollY;
-    };
-
-    useEffect(() => {
-        window.addEventListener('scroll', controlNavbar, { passive: true });
-
-        return () => {
-            window.removeEventListener('scroll', controlNavbar);
-        };
-    }, []);
-
-    const headerClasses = `
-        fixed top-0 w-full z-50 
-        bg-white/50 backdrop-blur-2xl 
-        shadow-2xl 
-        transition-transform duration-300 ease-in-out
-        after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-px 
-        after:bg-gradient-to-r after:from-transparent after:via-orange-200/85 after:to-transparent
-        ${isVisible ? 'translate-y-0' : '-translate-y-full'}
-    `;
-
-    return (
-        <header className={headerClasses}>
-            <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-                <div className="flex items-center space-x-2">
-                    <Logo className="w-8 h-8 text-orange-600" />
-                    <span className="text-xl font-bold text-slate-900">Gemini 會議記錄 APP</span>
-                </div>
-                <a href="https://a.ecpay.tw/dfU0" 
-                   data-gtm-id="cta-header"
-                   className="hidden sm:inline-block bg-orange-600 text-white font-semibold px-5 py-2 rounded-lg hover:bg-orange-700 transition-all duration-300">
-                    立即開始
-                </a>
-            </div>
-        </header>
-    );
+        {/* Right: Primary CTA pointing to Osmi */}
+        <div className="flex items-center">
+          <a
+            href={NAV_URL}
+            onClick={handleNavClick}
+            className="inline-flex items-center justify-center bg-[#134e6f] hover:bg-[#0d3b55] text-white text-xs sm:text-sm font-semibold px-3.5 sm:px-5 py-2 rounded-lg transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-[#134e6f] focus:ring-offset-2"
+          >
+            看看新一代 Osmi
+          </a>
+        </div>
+      </div>
+    </header>
+  );
 };
 
 export default Header;
